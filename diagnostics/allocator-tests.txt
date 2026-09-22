@@ -1,0 +1,96 @@
+GLM long-context patch: 64-bit sparse addresses; finite-logit check enabled
+GLM prefill patch: unused vocabulary projection skipped; hidden-state guard retained
+Request cleanup patch: completed/cancelled MTP state and idle wired buffers released; idle allocator cache limit=2.00 GiB
+test_duplicate_tensor_rejected (test_conversion.ConversionIntegrityTests.test_duplicate_tensor_rejected) ... ok
+test_index_cannot_invent_scales (test_conversion.ConversionIntegrityTests.test_index_cannot_invent_scales) ... ok
+test_missing_output_shard_rejected (test_conversion.ConversionIntegrityTests.test_missing_output_shard_rejected) ... ok
+test_missing_shard_rejected (test_conversion.ConversionIntegrityTests.test_missing_shard_rejected) ... ok
+test_mtp_without_index_and_finetuned_template (test_conversion.ConversionIntegrityTests.test_mtp_without_index_and_finetuned_template) ... ok
+test_packed_mxfp8_dtypes (test_conversion.ConversionIntegrityTests.test_packed_mxfp8_dtypes) ... ok
+test_rebuild_index_from_actual_headers (test_conversion.ConversionIntegrityTests.test_rebuild_index_from_actual_headers) ... ok
+test_short_header_rejected (test_conversion.ConversionIntegrityTests.test_short_header_rejected) ... ok
+test_truncated_output_does_not_change_config (test_conversion.ConversionIntegrityTests.test_truncated_output_does_not_change_config) ... ok
+test_truncated_shard_rejected (test_conversion.ConversionIntegrityTests.test_truncated_shard_rejected) ... ok
+test_unconverted_fp8_cannot_be_finalized (test_conversion.ConversionIntegrityTests.test_unconverted_fp8_cannot_be_finalized) ... ok
+test_alpha_is_preserved_for_vae_input (test_image_inputs.ReferenceInputTests.test_alpha_is_preserved_for_vae_input) ... ok
+test_supported_formats_and_exif_orientation (test_image_inputs.ReferenceInputTests.test_supported_formats_and_exif_orientation) ... ok
+test_total_pixels_and_extreme_aspect_ratio_are_bounded (test_image_inputs.ReferenceInputTests.test_total_pixels_and_extreme_aspect_ratio_are_bounded) ... ok
+test_auth_and_invalid_requests_never_load_weights (test_image_service.ImageServiceTests.test_auth_and_invalid_requests_never_load_weights) ... ok
+test_deadline_cancels_gpu_work_and_service_recovers (test_image_service.ImageServiceTests.test_deadline_cancels_gpu_work_and_service_recovers) ... ok
+test_edit_disconnect_releases_worker_for_generation (test_image_service.ImageServiceTests.test_edit_disconnect_releases_worker_for_generation) ... ok
+test_edit_json_data_urls_raw_base64_and_max_count (test_image_service.ImageServiceTests.test_edit_json_data_urls_raw_base64_and_max_count) ... ok
+test_edit_single_and_multi_uploads_keep_order_and_share_lazy_engine (test_image_service.ImageServiceTests.test_edit_single_and_multi_uploads_keep_order_and_share_lazy_engine) ... ok
+test_edit_validation_does_not_load_weights (test_image_service.ImageServiceTests.test_edit_validation_does_not_load_weights) ... ok
+test_lazy_load_reuse_idle_unload_and_reload (test_image_service.ImageServiceTests.test_lazy_load_reuse_idle_unload_and_reload) ... ok
+test_queue_is_bounded_health_responsive_and_cancel_releases_worker (test_image_service.ImageServiceTests.test_queue_is_bounded_health_responsive_and_cancel_releases_worker) ... ok
+test_upload_limits_and_damaged_images_are_rejected_before_loading (test_image_service.ImageServiceTests.test_upload_limits_and_damaged_images_are_rejected_before_loading) ... ok
+test_auth_failure_does_not_merge_models (test_image_service.ProxyTests.test_auth_failure_does_not_merge_models) ... ok
+test_edit_multipart_larger_than_text_limit_is_forwarded_unchanged (test_image_service.ProxyTests.test_edit_multipart_larger_than_text_limit_is_forwarded_unchanged) ... ok
+test_image_outage_leaves_chat_and_discovery_available (test_image_service.ProxyTests.test_image_outage_leaves_chat_and_discovery_available) ... ok
+test_image_routing_and_glm_rewrite_are_isolated (test_image_service.ProxyTests.test_image_routing_and_glm_rewrite_are_isolated) ... ok
+test_cap_before_eviction (test_long_context.GuardTests.test_cap_before_eviction) ... ok
+test_disk_threshold_applies_without_stripping (test_long_context.GuardTests.test_disk_threshold_applies_without_stripping) ... ok
+test_empty_batch_cache (test_long_context.GuardTests.test_empty_batch_cache) ... ok
+test_exact_limit_forwarding (test_long_context.GuardTests.test_exact_limit_forwarding) ... ok
+test_nonfinite_logits (test_long_context.GuardTests.test_nonfinite_logits) ... ok
+test_old_disk_namespace_isolated (test_long_context.GuardTests.test_old_disk_namespace_isolated) ... ok
+test_clone_strips_before_copy_and_preserves_state (test_long_context.SnapshotTests.test_clone_strips_before_copy_and_preserves_state) ... ok
+test_disk_roundtrip_long_state (test_long_context.SnapshotTests.test_disk_roundtrip_long_state) ... ok
+test_large_offsets (test_long_context.SparseAttentionTests.test_large_offsets) ... skipped 'allocates up to 8.6 GB'
+test_matches_gathered_reference (test_long_context.SparseAttentionTests.test_matches_gathered_reference) ... ok
+test_bf16_singleton_cache_and_decode_exact (test_prefill.PrefillTests.test_bf16_singleton_cache_and_decode_exact) ... ok
+test_decode_and_verifier_calls_outside_prefill_unchanged (test_prefill.PrefillTests.test_decode_and_verifier_calls_outside_prefill_unchanged) ... ok
+test_hidden_guard_rejects_nonfinite_and_resets_context (test_prefill.PrefillTests.test_hidden_guard_rejects_nonfinite_and_resets_context) ... ok
+test_left_padded_batch_cache_and_decode_exact (test_prefill.PrefillTests.test_left_padded_batch_cache_and_decode_exact) ... ok
+test_mxfp8_singleton_cache_and_decode_exact (test_prefill.PrefillTests.test_mxfp8_singleton_cache_and_decode_exact) ... ok
+test_nested_context_does_not_change_another_model (test_prefill.PrefillTests.test_nested_context_does_not_change_another_model) ... ok
+test_right_padded_finished_row_readout_is_preserved (test_prefill.PrefillTests.test_right_padded_finished_row_readout_is_preserved) ... ok
+test_sampling_logits_guard_still_rejects_nonfinite_head (test_prefill.PrefillTests.test_sampling_logits_guard_still_rejects_nonfinite_head) ... ok
+test_chat_preserves_body_and_non_json_across_chunks (test_proxy_streams.ProxyStreamTests.test_chat_preserves_body_and_non_json_across_chunks) ... ok
+test_json_only_rewrites_model_fields (test_proxy_streams.ProxyStreamTests.test_json_only_rewrites_model_fields) ... ok
+test_responses_reasoning_order_with_crlf_and_split_utf8 (test_proxy_streams.ProxyStreamTests.test_responses_reasoning_order_with_crlf_and_split_utf8) ... ok
+test_cached_target_matches_existing_text_pipeline_at_two_timesteps (test_qwen_image_edit.EditingMathTests.test_cached_target_matches_existing_text_pipeline_at_two_timesteps) ... skipped 'Run with ~/.venvs/qwen-image/bin/python (mlx-vlm 0.7.2)'
+test_grid_mismatch_rejected (test_qwen_image_edit.EditingMathTests.test_grid_mismatch_rejected) ... skipped 'Run with ~/.venvs/qwen-image/bin/python (mlx-vlm 0.7.2)'
+test_multiple_references_match_independent_dense_attention (test_qwen_image_edit.EditingMathTests.test_multiple_references_match_independent_dense_attention) ... skipped 'Run with ~/.venvs/qwen-image/bin/python (mlx-vlm 0.7.2)'
+test_allocator_budget_validation (test_request_cleanup.CleanupTests.test_allocator_budget_validation) ... ok
+test_cancel_closes_suspended_rounds (test_request_cleanup.CleanupTests.test_cancel_closes_suspended_rounds) ... ok
+test_first_token_completes_request (test_request_cleanup.CleanupTests.test_first_token_completes_request) ... ok
+test_idle_checks_limit_after_synchronizing_and_releasing_inputs (test_request_cleanup.CleanupTests.test_idle_checks_limit_after_synchronizing_and_releasing_inputs) ... ok
+test_idle_only_releases_wired_limit (test_request_cleanup.CleanupTests.test_idle_only_releases_wired_limit) ... ok
+test_normal_round_completion (test_request_cleanup.CleanupTests.test_normal_round_completion) ... ok
+test_owned_embeddings_release_all_server_references (test_request_cleanup.CleanupTests.test_owned_embeddings_release_all_server_references) ... ok
+test_partial_cancel_preserves_other_row (test_request_cleanup.CleanupTests.test_partial_cancel_preserves_other_row) ... ok
+test_real_allocator_reuses_small_pool_and_enforces_overshoot (test_request_cleanup.CleanupTests.test_real_allocator_reuses_small_pool_and_enforces_overshoot) ... ok
+test_zero_restores_idle_clearing (test_request_cleanup.CleanupTests.test_zero_restores_idle_clearing) ... ok
+test_cancel_preserves_auth_and_stops_only_target (test_request_lifecycle.CancelEndpointTests.test_cancel_preserves_auth_and_stops_only_target) ... ok
+test_backend_nonstream_disconnect_closes_iterator (test_request_lifecycle.MiddlewareTests.test_backend_nonstream_disconnect_closes_iterator) ... ok
+test_image_edit_disconnect_cancels_upstream (test_request_lifecycle.MiddlewareTests.test_image_edit_disconnect_cancels_upstream) ... ok
+test_proxy_disconnect_cancels_upstream_and_closes (test_request_lifecycle.MiddlewareTests.test_proxy_disconnect_cancels_upstream_and_closes) ... ok
+test_split_created_event_is_registered_and_removed (test_request_lifecycle.MiddlewareTests.test_split_created_event_is_registered_and_removed) ... ok
+test_two_concurrent_contexts_are_isolated (test_request_lifecycle.MiddlewareTests.test_two_concurrent_contexts_are_isolated) ... ok
+test_cancel_before_iterator_registration (test_request_lifecycle.OwnershipTests.test_cancel_before_iterator_registration) ... ok
+test_cancel_is_request_scoped (test_request_lifecycle.OwnershipTests.test_cancel_is_request_scoped) ... ok
+test_cancel_pending_frees_input_and_unblocks_waiter (test_request_lifecycle.OwnershipTests.test_cancel_pending_frees_input_and_unblocks_waiter) ... ok
+test_cancelled_eof_is_not_success (test_request_lifecycle.OwnershipTests.test_cancelled_eof_is_not_success) ... ok
+test_finished_generation_cannot_be_cancelled (test_request_lifecycle.OwnershipTests.test_finished_generation_cannot_be_cancelled) ... ok
+test_late_iterator_after_handler_exit (test_request_lifecycle.OwnershipTests.test_late_iterator_after_handler_exit) ... ok
+test_queued_cancel_not_admitted (test_request_lifecycle.OwnershipTests.test_queued_cancel_not_admitted) ... ok
+test_occupied_image_port_preserves_runner_record (test_service_scripts.ServiceScriptTests.test_occupied_image_port_preserves_runner_record) ... ok
+test_occupied_port_preserves_supervisor_record (test_service_scripts.ServiceScriptTests.test_occupied_port_preserves_supervisor_record) ... ok
+test_proxy_timeout_exits_and_stops_owned_child (test_service_scripts.ServiceScriptTests.test_proxy_timeout_exits_and_stops_owned_child) ... ok
+test_stop_reports_occupied_port_as_failure (test_service_scripts.ServiceScriptTests.test_stop_reports_occupied_port_as_failure) ... ok
+test_stop_scopes_proxy_to_project (test_service_scripts.ServiceScriptTests.test_stop_scopes_proxy_to_project) ... ok
+test_all_six_checks (test_smoke.SmokeTests.test_all_six_checks) ... ok
+test_http_failure (test_smoke.SmokeTests.test_http_failure) ... ok
+test_incomplete_stream (test_smoke.SmokeTests.test_incomplete_stream) ... ok
+test_wrong_event_index (test_smoke.SmokeTests.test_wrong_event_index) ... ok
+test_wrong_image_answer (test_smoke.SmokeTests.test_wrong_image_answer) ... ok
+
+----------------------------------------------------------------------
+Ran 84 tests in 7.197s
+
+OK (skipped=4)
+[补齐] chat_template.jinja
+[完成] /var/folders/0y/27_47xw54xnbjlbsw3jzt6dm0000gn/T/tmplm7wwd18/target
+       张量 1 个，其中 1 个带 mxfp8 scale
+       权重 0.0 GiB

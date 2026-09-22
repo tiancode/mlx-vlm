@@ -1,0 +1,10 @@
+test_occupied_image_port_preserves_runner_record (test_service_scripts.ServiceScriptTests.test_occupied_image_port_preserves_runner_record) ... ok
+test_occupied_port_preserves_supervisor_record (test_service_scripts.ServiceScriptTests.test_occupied_port_preserves_supervisor_record) ... ok
+test_proxy_timeout_exits_and_stops_owned_child (test_service_scripts.ServiceScriptTests.test_proxy_timeout_exits_and_stops_owned_child) ... ok
+test_stop_reports_occupied_port_as_failure (test_service_scripts.ServiceScriptTests.test_stop_reports_occupied_port_as_failure) ... ok
+test_stop_scopes_proxy_to_project (test_service_scripts.ServiceScriptTests.test_stop_scopes_proxy_to_project) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 5.901s
+
+OK

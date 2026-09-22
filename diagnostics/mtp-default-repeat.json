@@ -1,0 +1,236 @@
+{
+  "run_id": "mtp-20260922-a",
+  "label": "default-adaptive-3-repeat",
+  "health": {
+    "status": "healthy",
+    "loaded_model": "/Users/deht/models/GLM-5.3-Flash-FineTunning-MXFP8",
+    "loaded_adapter": null,
+    "loaded_models": {
+      "text_generation": {
+        "model": "glm-5.3-flash",
+        "adapter": null,
+        "model_kind": "text_generation"
+      }
+    },
+    "loaded_context_size": 1048576,
+    "configured_context_limit": 393216,
+    "effective_context_limit": 393216,
+    "loaded_tool_parser": "glm47",
+    "continuous_batching_enabled": true,
+    "apc_enabled": true
+  },
+  "settings": {
+    "kv_bits": null,
+    "kv_quant_scheme": "uniform",
+    "kv_group_size": null,
+    "kv_key_bits": null,
+    "kv_value_bits": null,
+    "kv_key_scheme": null,
+    "kv_value_scheme": null,
+    "quantized_kv_start": null,
+    "apc_enabled": true,
+    "apc_disk_enabled": false,
+    "apc_disk_path": null,
+    "apc_block_size": 16,
+    "apc_num_blocks": 2048,
+    "apc_disk_max_gb": null,
+    "apc_memory_max_gb": 32.0,
+    "apc_memory_reserve_gb": null,
+    "apc_disk_queue_max_gb": 1.0,
+    "apc_disk_shard_max_blocks": 256,
+    "apc_checkpoint_entries": 2,
+    "apc_checkpoint_interval_tokens": 2048,
+    "apc_checkpoint_guard_tokens": 1,
+    "max_kv_size": null,
+    "token_queue_timeout": 3000.0,
+    "spec_draft_model": null,
+    "spec_draft_kind": null,
+    "vision_cache_size": 20
+  },
+  "requests": [
+    {
+      "name": "code_t0",
+      "seconds": 17.674785624956712,
+      "input_sha256": "6947aa6e7713456f0f696946f847413362a766d0a7c4dda7e413be20a262b2b4",
+      "usage": {
+        "prompt_tokens": 67,
+        "completion_tokens": 384,
+        "total_tokens": 451,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 67,
+        "cache_n": 0,
+        "predicted_n": 384,
+        "prompt_ms": 686.5066260215826,
+        "prompt_per_token_ms": 10.246367552560935,
+        "prompt_per_second": 97.5955620243258,
+        "predicted_ms": 16951.71830773976,
+        "predicted_per_token_ms": 44.14509975973896,
+        "predicted_per_second": 22.652570850276252,
+        "peak_memory": 340.294405226,
+        "draft_kind": "mtp",
+        "draft_rounds": 160,
+        "draft_n": 287,
+        "draft_n_accepted": 223
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": "# Thread-Safe Bounded LRU Cache\n\n## Implementation\n\n```python\n\"\"\"Thread-safe bounded LRU cache.\"\"\"\n\nimport threading\nfrom collections import OrderedDict\n\n\nclass LRUCache:\n    \"\"\"A bounded, thread-safe LRU cache.\n\n    - get(key) -> value or None (default), marks key as most recently used.\n    - put(key, value) inserts/updates a key; evicts the least recently\n      used entry when capacity is exceeded.\n    \"\"\"\n\n    def __init__(self, capacity: int, default=None):\n        if capacity <= 0:\n            raise ValueError(\"capacity must be positive\")\n        self._capacity = capacity\n        self._default = default\n        self._data: OrderedDict = OrderedDict()\n        self._lock = threading.Lock()\n\n    def get(self, key, default=None):\n        with self._lock:\n            if key not in self._data:\n                return self._default if default is None else default\n            self._data.move_to_end(key)  # mark as most recently used\n            return self._data[key]\n\n    def put(self, key, value) -> None:\n        with self._lock:\n            if key in self._data:\n                self._data.move_to_end(key)\n            self._data[key] = value\n            if len(self._data) > self._capacity:\n                self._data.popitem(last=False)  # evict LRU (oldest)\n\n    def __len__(self) -> int:\n        with self._lock:\n            return len(self._data)\n\n    def __contains__(self, key) -> bool:\n        with self._lock:\n            return key in self._data\n```\n\n## Unit Tests\n\n```python\nimport threading\nimport unittest\n\nfrom lru_cache import LRUCache\n\n\nclass TestEv",
+          "reasoning_content": "Write implementation with OrderedDict + lock, tests with unittest, complexity explanation.",
+          "reasoning": "Write implementation with OrderedDict + lock, tests with unittest, complexity explanation.",
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "same_input": true,
+      "same_output": true,
+      "decode_speedup": 0.9938288822590426
+    },
+    {
+      "name": "reasoning_t0",
+      "seconds": 16.904535416979343,
+      "input_sha256": "97beb787fefac2a730740e15101d671c3a2d61e56fdef87e3706e2c17f82e07e",
+      "usage": {
+        "prompt_tokens": 72,
+        "completion_tokens": 384,
+        "total_tokens": 456,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 72,
+        "cache_n": 0,
+        "predicted_n": 384,
+        "prompt_ms": 720.9074160200544,
+        "prompt_per_token_ms": 10.012603000278533,
+        "prompt_per_second": 99.87412863290213,
+        "predicted_ms": 16139.169211487235,
+        "predicted_per_token_ms": 42.029086488248005,
+        "predicted_per_second": 23.793046281879473,
+        "peak_memory": 340.294405226,
+        "draft_kind": "mtp",
+        "draft_rounds": 148,
+        "draft_n": 288,
+        "draft_n_accepted": 236
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": null,
+          "reasoning_content": "We need to find all triples of positive integers $a \\le b \\le c$ with $\\frac{1}{a} + \\frac{1}{b} + \\frac{1}{c} = 1$.\n\nThis is the classic Egyptian fraction problem for 1 with three terms. The known answer: $(3,3,3)$, $(2,4,4)$, $(2,3,6)$.\n\nLet me write a rigorous proof.\n\n**Step 1: Bound on $a$.**\n\nSince $a \\le b \\le c$, we have $\\frac{1}{a} \\ge \\frac{1}{b} \\ge \\frac{1}{c}$. Therefore\n$$1 = \\frac{1}{a} + \\frac{1}{b} + \\frac{1}{c} \\le \\frac{3}{a},$$\nso $a \\le 3$.\n\nAlso, $1 > \\frac{1}{a}$ (since the other two terms are positive), so $a \\ge 2$. Wait, actually $a$ could be 1? If $a = 1$, then $\\frac{1}{a} = 1$ and the sum would exceed 1 since the other terms are positive. So $a \\ge 2$.\n\nThus $a \\in \\{2, 3\\}$.\n\n**Case $a = 3$:** Then $\\frac{1}{b} + \\frac{1}{c} = 1 - \\frac{1}{3} = \\frac{2}{3}$. Since $b \\ge a = 3$, we have $\\frac{1}{b} \\le \\frac{1}{3}$, and $\\frac{2}{3} = \\frac{1}{b} + \\frac{1",
+          "reasoning": "We need to find all triples of positive integers $a \\le b \\le c$ with $\\frac{1}{a} + \\frac{1}{b} + \\frac{1}{c} = 1$.\n\nThis is the classic Egyptian fraction problem for 1 with three terms. The known answer: $(3,3,3)$, $(2,4,4)$, $(2,3,6)$.\n\nLet me write a rigorous proof.\n\n**Step 1: Bound on $a$.**\n\nSince $a \\le b \\le c$, we have $\\frac{1}{a} \\ge \\frac{1}{b} \\ge \\frac{1}{c}$. Therefore\n$$1 = \\frac{1}{a} + \\frac{1}{b} + \\frac{1}{c} \\le \\frac{3}{a},$$\nso $a \\le 3$.\n\nAlso, $1 > \\frac{1}{a}$ (since the other two terms are positive), so $a \\ge 2$. Wait, actually $a$ could be 1? If $a = 1$, then $\\frac{1}{a} = 1$ and the sum would exceed 1 since the other terms are positive. So $a \\ge 2$.\n\nThus $a \\in \\{2, 3\\}$.\n\n**Case $a = 3$:** Then $\\frac{1}{b} + \\frac{1}{c} = 1 - \\frac{1}{3} = \\frac{2}{3}$. Since $b \\ge a = 3$, we have $\\frac{1}{b} \\le \\frac{1}{3}$, and $\\frac{2}{3} = \\frac{1}{b} + \\frac{1",
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "same_input": true,
+      "same_output": true,
+      "decode_speedup": 0.9965358986396627
+    },
+    {
+      "name": "chinese_t1",
+      "seconds": 19.63650174997747,
+      "input_sha256": "48b2fce899ab63373b0a5fd89e562a990bb07d3a5642d301c9bd12d80f20b06c",
+      "usage": {
+        "prompt_tokens": 81,
+        "completion_tokens": 384,
+        "total_tokens": 465,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 81,
+        "cache_n": 0,
+        "predicted_n": 384,
+        "prompt_ms": 783.5805410286412,
+        "prompt_per_token_ms": 9.673833839859768,
+        "prompt_per_second": 103.37163285559349,
+        "predicted_ms": 18816.545295069485,
+        "predicted_per_token_ms": 49.00142003924345,
+        "predicted_per_second": 20.407571845859497,
+        "peak_memory": 340.294405226,
+        "draft_kind": "mtp",
+        "draft_rounds": 182,
+        "draft_n": 317,
+        "draft_n_accepted": 202
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": "# 数据库事务的隔离级别：从脏读到写偏差\n\n数据库的隔离级别决定了并发事务之间“彼此能看到什么”。隔离得越严格，数据越安全，但并发性能也越低。本文用具体的操作时序，带你逐一理解四种经典的并发异常，最后讲清快照隔离与可串行化的区别。\n\n---\n\n## 一、脏读\n\n**定义**：一个事务读到了另一个事务**尚未提交**的数据。如果对方最终回滚了，读到的数据就是“脏”的——它从来没有真正存在过。\n\n假设账户表里 A 有 100 元。\n\n| 时刻 | 事务 T1 | 事务 T2 |\n|------|---------|---------|\n| t1 | `BEGIN` | |\n| t2 | `UPDATE account SET balance = 200 WHERE name = 'A'` | |\n| t3 | | `BEGIN` |\n| t4 | | `SELECT balance` → **读到 200** |\n| t5 | `ROLLBACK` | |\n| t6 | | 基于 200 元做业务决策（错误！） |\n\nT2 在 t4 读到的 200 元从未被提交，若 T2 据此转账或打折扣，就产生了真实世界的错误。**读已提交**级别即可避免脏读。\n\n---\n\n## 二、不可重复读\n\n**定义**：同一事务内，**两次读取同一行数据，结果不同**——因为中间被别的事务修改并提交了。\n\n还是 A 有 100 元。\n\n| 时刻 | 事务 T1 | 事务 T2 |\n|------|---------|---------|\n| t1 | `BEGIN` | |\n| t2 | `SELECT balance` → 100 | |\n| t3 | | `BEGIN` |\n| t4 | | `UPDATE balance = 50` |\n| t",
+          "reasoning_content": null,
+          "reasoning": null,
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "same_input": true,
+      "same_output": true,
+      "decode_speedup": 0.9986240274588193
+    },
+    {
+      "name": "reasoning_t1",
+      "seconds": 17.522111332975328,
+      "input_sha256": "af7c666036d35c27412d83be7f04c787a523083e95a1437a97e7efebf76ab13b",
+      "usage": {
+        "prompt_tokens": 72,
+        "completion_tokens": 384,
+        "total_tokens": 456,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 72,
+        "cache_n": 0,
+        "predicted_n": 384,
+        "prompt_ms": 741.1779999965802,
+        "prompt_per_token_ms": 10.294138888841392,
+        "prompt_per_second": 97.14265669020426,
+        "predicted_ms": 16736.79026630622,
+        "predicted_per_token_ms": 43.58539131850578,
+        "predicted_per_second": 22.94346728912844,
+        "peak_memory": 340.294405226,
+        "draft_kind": "mtp",
+        "draft_rounds": 152,
+        "draft_n": 289,
+        "draft_n_accepted": 232
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": null,
+          "reasoning_content": "We need to find all triples of positive integers $a \\le b \\le c$ with $\\frac{1}{a} + \\frac{1}{b} + \\frac{1}{c} = 1$.\n\n**Setting up bounds.**\n\nSince $a \\le b \\le c$, we have $\\frac{1}{a} \\ge \\frac{1}{b} \\ge \\frac{1}{c}$.\n\nThe sum is $\\frac{1}{a} + \\frac{1}{b} + \\frac{1}{c} \\le \\frac{3}{a}$... wait, actually $\\frac{1}{a} + \\frac{1}{b} + \\frac{1}{c} \\le \\frac{1}{a} + \\frac{1}{a} + \\frac{1}{a} = \\frac{3}{a}$. Since the sum equals 1, we need $\\frac{3}{a} \\ge 1$, i.e., $a \\le 3$.\n\nAlso $a \\ge 3$: if $a = 1$, then $\\frac{1}{b} + \\frac{1}{c} = 0$, impossible since $b, c$ positive. Actually $\\frac{1}{a} = 1$ already, so sum $> 1$. If $a = 2$, the sum $\\ge 1$; we need to check whether it can be exactly 1.\n\nActually let's be careful: Since $\\frac{1}{a} + \\frac{1}{b} + \\frac{1}{c} = 1$ and $\\frac{1}{b} \\le \\frac{1}{a}$, $\\frac{1}{c} \\le \\frac{1}{a}$, we get $1",
+          "reasoning": "We need to find all triples of positive integers $a \\le b \\le c$ with $\\frac{1}{a} + \\frac{1}{b} + \\frac{1}{c} = 1$.\n\n**Setting up bounds.**\n\nSince $a \\le b \\le c$, we have $\\frac{1}{a} \\ge \\frac{1}{b} \\ge \\frac{1}{c}$.\n\nThe sum is $\\frac{1}{a} + \\frac{1}{b} + \\frac{1}{c} \\le \\frac{3}{a}$... wait, actually $\\frac{1}{a} + \\frac{1}{b} + \\frac{1}{c} \\le \\frac{1}{a} + \\frac{1}{a} + \\frac{1}{a} = \\frac{3}{a}$. Since the sum equals 1, we need $\\frac{3}{a} \\ge 1$, i.e., $a \\le 3$.\n\nAlso $a \\ge 3$: if $a = 1$, then $\\frac{1}{b} + \\frac{1}{c} = 0$, impossible since $b, c$ positive. Actually $\\frac{1}{a} = 1$ already, so sum $> 1$. If $a = 2$, the sum $\\ge 1$; we need to check whether it can be exactly 1.\n\nActually let's be careful: Since $\\frac{1}{a} + \\frac{1}{b} + \\frac{1}{c} = 1$ and $\\frac{1}{b} \\le \\frac{1}{a}$, $\\frac{1}{c} \\le \\frac{1}{a}$, we get $1",
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "same_input": true,
+      "same_output": true,
+      "decode_speedup": 0.9985493248796898
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "run_id": "allocator-20260922-a",
+  "allocator_limit_bytes": 2147483648,
+  "request_count": 22,
+  "all_inputs_equal": true,
+  "all_outputs_equal": true,
+  "all_cached_token_counts_equal": true,
+  "all_idle_pools_within_limit": true,
+  "groups": {
+    "short": {
+      "requests": 18,
+      "before_mean_seconds": 3.510561794058756,
+      "after_mean_seconds": 3.5107131296147904,
+      "latency_change_percent": 0.004310864326351194,
+      "before_total_prompt_seconds": 9.169248167076148,
+      "after_total_prompt_seconds": 9.141249710868578
+    },
+    "cold": {
+      "requests": 2,
+      "before_mean_seconds": 26.40587429149309,
+      "after_mean_seconds": 26.451722896512365,
+      "latency_change_percent": 0.1736303237421799,
+      "before_total_prompt_seconds": 43.72538541594986,
+      "after_total_prompt_seconds": 43.84331779088825
+    },
+    "warm": {
+      "requests": 2,
+      "before_mean_seconds": 4.643249228480272,
+      "after_mean_seconds": 4.619154041487491,
+      "latency_change_percent": -0.5189294351246265,
+      "before_total_prompt_seconds": 0.11991116596618667,
+      "after_total_prompt_seconds": 0.1198296660440974
+    }
+  },
+  "idle_cache_max_bytes": 691466867,
+  "idle_cache_nonzero_requests": 20,
+  "notes": [
+    "Single before/after comparison; latency differences below 1% do not establish a speedup.",
+    "Idle pools exceeding the limit are cleared; both cold long-input cases ended with zero cached bytes.",
+    "The cache limit excludes active arrays, model weights and APC.",
+    "The before run used the pre-change cleanup implementation; GLM_ALLOCATOR_CACHE_GB=0 reproduces that policy."
+  ],
+  "final_service_status": {
+    "glm": "healthy",
+    "context_limit": 393216,
+    "in_flight": 0,
+    "queued": 0,
+    "image": {
+      "status": "ok",
+      "loaded": false,
+      "active": false,
+      "queued": 0
+    }
+  },
+  "batched_output_parity": true,
+  "batched_requests": 4,
+  "lifecycle_cases_passed": 4,
+  "lifecycle_pools_within_limit": true,
+  "tests": {
+    "total": 84,
+    "passed": 80,
+    "skipped": 4
+  },
+  "smoke_checks_passed": 6
+}

@@ -1,0 +1,188 @@
+{
+  "run_id": "mtp-batch-20260922-a",
+  "label": "block-2",
+  "batches": [
+    {
+      "temperature": 0,
+      "seconds": 12.524044958001468,
+      "shared_prefill": true,
+      "requests": [
+        {
+          "name": "code_t0",
+          "input_sha256": "eca006d0d6de5ea28b9318e64e1461a3c2dab200022d54938e87bd92e3a6a293",
+          "usage": {
+            "prompt_tokens": 69,
+            "completion_tokens": 128,
+            "total_tokens": 197,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "timings": {
+            "prompt_n": 69,
+            "cache_n": 0,
+            "predicted_n": 128,
+            "prompt_ms": 3555.4272080189544,
+            "prompt_per_token_ms": 51.527930550999336,
+            "prompt_per_second": 19.406950547145655,
+            "predicted_ms": 8336.367748032406,
+            "predicted_per_token_ms": 65.12787303150317,
+            "predicted_per_second": 15.354409002675208,
+            "peak_memory": 351.905533045,
+            "draft_kind": "mtp",
+            "draft_rounds": 70,
+            "draft_n": 70,
+            "draft_n_accepted": 50
+          },
+          "choice": {
+            "index": 0,
+            "finish_reason": "length",
+            "message": {
+              "role": "assistant",
+              "content": "# Thread-Safe Bounded LRU Cache\n\n## Implementation\n\n```python\n\"\"\"Thread-safe bounded LRU cache.\"\"\"\n\nimport threading\nfrom collections import OrderedDict\nfrom typing import Any, Callable, Hashable, Optional\n\n\nclass LRUCache:\n    \"\"\"\n    A bounded, thread-safe LRU (Least Recently Used) cache.\n\n    - `get` and `put` are O(1).\n    - When capacity is exceeded, the least recently used entry is evicted.\n    - Safe for concurrent use from multiple threads.\n    \"\"\"\n\n    def __init__(",
+              "reasoning_content": "Write implementation with OrderedDict + lock, tests with unittest, complexity explanation.",
+              "reasoning": "Write implementation with OrderedDict + lock, tests with unittest, complexity explanation.",
+              "tool_calls": null,
+              "tool_call_id": null,
+              "name": null
+            },
+            "logprobs": null
+          }
+        },
+        {
+          "name": "chinese_t0",
+          "input_sha256": "51e3e732000f5ad29f2edbde1ac9cd693ed47fb6e7b1ec4b1f6075c6bc85d646",
+          "usage": {
+            "prompt_tokens": 83,
+            "completion_tokens": 128,
+            "total_tokens": 211,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "timings": {
+            "prompt_n": 83,
+            "cache_n": 0,
+            "predicted_n": 128,
+            "prompt_ms": 3555.427208018955,
+            "prompt_per_token_ms": 42.83647238577054,
+            "prompt_per_second": 23.34459268714622,
+            "predicted_ms": 8937.190803134534,
+            "predicted_per_token_ms": 69.82180314948855,
+            "predicted_per_second": 14.322173803775863,
+            "peak_memory": 351.905533045,
+            "draft_kind": "mtp",
+            "draft_rounds": 77,
+            "draft_n": 77,
+            "draft_n_accepted": 57
+          },
+          "choice": {
+            "index": 0,
+            "finish_reason": "length",
+            "message": {
+              "role": "assistant",
+              "content": "# 数据库事务隔离级别详解：从脏读到写偏差\n\n## 引言\n\n在多用户并发访问数据库的场景中，事务的隔离性是保证数据正确性的关键。SQL 标准定义了四种隔离级别（读未提交、读已提交、可重复读、可串行化），但实际系统中还广泛使用快照隔离等实现方式。本文通过具体的并发时序，逐一剖析常见的并发异常，最后对比快照隔离与可串行化的区别。\n\n---\n\n## 一、脏读\n\n**定义**：一个事务读到了另一个事务**尚未提交**的数据。如果对方",
+              "reasoning_content": null,
+              "reasoning": null,
+              "tool_calls": null,
+              "tool_call_id": null,
+              "name": null
+            },
+            "logprobs": null
+          }
+        }
+      ]
+    },
+    {
+      "temperature": 1,
+      "seconds": 10.781170582980849,
+      "shared_prefill": true,
+      "requests": [
+        {
+          "name": "code_t1",
+          "input_sha256": "3890b4c0591927cc37f0b16395c002a681d03865e333026d6619a98a0baab7fe",
+          "usage": {
+            "prompt_tokens": 69,
+            "completion_tokens": 128,
+            "total_tokens": 197,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "timings": {
+            "prompt_n": 69,
+            "cache_n": 0,
+            "predicted_n": 128,
+            "prompt_ms": 991.3118329714052,
+            "prompt_per_token_ms": 14.366838159005873,
+            "prompt_per_second": 69.6047375861298,
+            "predicted_ms": 8998.890876946018,
+            "predicted_per_token_ms": 70.30383497614076,
+            "predicted_per_second": 14.22397512652579,
+            "peak_memory": 351.905533045,
+            "draft_kind": "mtp",
+            "draft_rounds": 75,
+            "draft_n": 75,
+            "draft_n_accepted": 44
+          },
+          "choice": {
+            "index": 0,
+            "finish_reason": "length",
+            "message": {
+              "role": "assistant",
+              "content": "# Thread-Safe Bounded LRU Cache\n\n## Implementation\n\n```python\n\"\"\"\nThread-safe bounded LRU (Least Recently Used) cache.\n\"\"\"\n\nimport threading\nfrom collections import OrderedDict\nfrom typing import Any, Callable, Hashable, Optional\n\n\nclass LRUCache:\n    \"\"\"\n    A fixed-capacity, thread-safe LRU cache.\n\n    - get(key) returns the value and marks the key as most recently used.\n    - put(key, value) inserts/updates a key, evicting the LRU entry when full.\n    - Both are O",
+              "reasoning_content": "Write thread-safe LRU cache with OrderedDict, tests with threading.",
+              "reasoning": "Write thread-safe LRU cache with OrderedDict, tests with threading.",
+              "tool_calls": null,
+              "tool_call_id": null,
+              "name": null
+            },
+            "logprobs": null
+          }
+        },
+        {
+          "name": "chinese_t1",
+          "input_sha256": "e8e7d09311bedf2ac5568db4d559740456a55ec286fa58b465f0e600a3f58733",
+          "usage": {
+            "prompt_tokens": 83,
+            "completion_tokens": 128,
+            "total_tokens": 211,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          },
+          "timings": {
+            "prompt_n": 83,
+            "cache_n": 0,
+            "predicted_n": 128,
+            "prompt_ms": 991.3118329714052,
+            "prompt_per_token_ms": 11.94351605989645,
+            "prompt_per_second": 83.72743796592425,
+            "predicted_ms": 9764.75766928881,
+            "predicted_per_token_ms": 76.28716929131883,
+            "predicted_per_second": 13.108364214974166,
+            "peak_memory": 351.905533045,
+            "draft_kind": "mtp",
+            "draft_rounds": 84,
+            "draft_n": 84,
+            "draft_n_accepted": 52
+          },
+          "choice": {
+            "index": 0,
+            "finish_reason": "length",
+            "message": {
+              "role": "assistant",
+              "content": "# 数据库事务隔离级别详解：从脏读到写偏差\n\n## 引言\n\n当多个事务并发访问数据库时，如果不加控制，就会出现各种诡异的数据异常。数据库通过“隔离级别”来约束并发行为，在不同的一致性与性能之间做权衡。本文从最基础的读提交讲起，依次剖析四类经典异常——脏读、不可重复读、幻读、写偏差，每个都配上两个并发事务的具体时序，最后说明快照隔离与可串行化的本质区别。\n\n以下例子统一使用一张账户表：\n\n```sql\naccount(id, owner, balance)\n-- 初始",
+              "reasoning_content": null,
+              "reasoning": null,
+              "tool_calls": null,
+              "tool_call_id": null,
+              "name": null
+            },
+            "logprobs": null
+          }
+        }
+      ]
+    }
+  ]
+}

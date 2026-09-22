@@ -1,0 +1,131 @@
+{
+  "date": "2026-09-22",
+  "hardware": "M3 Ultra / 512 GiB",
+  "model": "GLM-5.3-Flash-FineTunning-MXFP8",
+  "mlx_vlm": "0.7.1",
+  "mlx": "0.32.2",
+  "run_id": "mtp-20260922-a",
+  "max_output_tokens": 384,
+  "temperatures": [
+    0,
+    1
+  ],
+  "top_p": 0.95,
+  "seed": 874,
+  "concurrency": 1,
+  "selected_block_size": 2,
+  "prefill_optimization_enabled": true,
+  "notes": [
+    "Block size includes the anchor token.",
+    "Throughput is total output tokens divided by total decode time, excluding prefill.",
+    "Eight fixed-prompt cases; this is not a comprehensive quality evaluation.",
+    "Two reasoning_effort=max cases are approximately 2% slower with block size 2.",
+    "Process-lifetime peak_memory values cannot be compared across restarts."
+  ],
+  "configurations": {
+    "default": {
+      "cases": 8,
+      "output_tokens": 3072,
+      "decode_seconds": 143.4734289302216,
+      "decode_tok_s": 21.41163017365445,
+      "output_parity": true,
+      "source": "diagnostics/mtp-default.json"
+    },
+    "block4": {
+      "cases": 8,
+      "output_tokens": 3072,
+      "decode_seconds": 160.309293285946,
+      "decode_tok_s": 19.162956414014182,
+      "output_parity": true,
+      "source": "diagnostics/mtp-block4.json",
+      "decode_gain_percent": -10.502113764355547
+    },
+    "block2": {
+      "cases": 8,
+      "output_tokens": 3072,
+      "decode_seconds": 137.05978168078332,
+      "decode_tok_s": 22.413577216654172,
+      "output_parity": true,
+      "source": "diagnostics/mtp-block2.json",
+      "decode_gain_percent": 4.67945240448131
+    },
+    "default-repeat": {
+      "cases": 4,
+      "output_tokens": 1536,
+      "decode_seconds": 68.6442230806027,
+      "decode_tok_s": 22.376245677606608,
+      "output_parity": true,
+      "source": "diagnostics/mtp-default-repeat.json"
+    }
+  },
+  "families": [
+    {
+      "family": "code",
+      "default_tok_s": 22.060686969864438,
+      "block2_tok_s": 22.924684456213257,
+      "decode_gain_percent": 3.9164577582242233
+    },
+    {
+      "family": "chinese",
+      "default_tok_s": 20.34701743024725,
+      "block2_tok_s": 21.596682566293612,
+      "decode_gain_percent": 6.141760778111149
+    },
+    {
+      "family": "reasoning",
+      "default_tok_s": 23.417652657109002,
+      "block2_tok_s": 22.951907038167995,
+      "decode_gain_percent": -1.9888655185071213
+    },
+    {
+      "family": "long_context",
+      "default_tok_s": 20.1471646040302,
+      "block2_tok_s": 22.237351916502718,
+      "decode_gain_percent": 10.374597882892168
+    }
+  ],
+  "batch_parity": {
+    "concurrency": 2,
+    "temperatures": [
+      0,
+      1
+    ],
+    "requests": 4,
+    "max_output_tokens": 128,
+    "shared_prefill_confirmed": true,
+    "all_outputs_identical": true
+  },
+  "repeat_comparison": {
+    "cases": [
+      {
+        "name": "code_t0",
+        "decode_gain_percent": 3.3814849914296286,
+        "identical_output": true
+      },
+      {
+        "name": "reasoning_t0",
+        "decode_gain_percent": -1.4302785296361087,
+        "identical_output": true
+      },
+      {
+        "name": "chinese_t1",
+        "decode_gain_percent": 6.889947288900378,
+        "identical_output": true
+      },
+      {
+        "name": "reasoning_t1",
+        "decode_gain_percent": -2.1921645215806085,
+        "identical_output": true
+      }
+    ],
+    "default_source": "diagnostics/mtp-default-repeat.json",
+    "block2_source": "diagnostics/mtp-block2-repeat.json",
+    "note": "Only these matching four cases are comparable; their task mix differs from the eight-case sweep."
+  },
+  "validation": {
+    "startup_tests_passed": 5,
+    "http_smoke_checks_passed": 6,
+    "lifecycle_cases_passed": 4,
+    "runtime_block_size": 2
+  }
+}

@@ -1,0 +1,7 @@
+通过: /health
+通过: /v1/models
+通过: Chat 文本
+通过: Chat 图片理解
+通过: Responses 流式事件及终态
+通过: Messages
+全部六项检查通过。

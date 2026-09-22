@@ -77,19 +77,17 @@ curl --fail-with-body http://127.0.0.1:1235/v1/images/edits \
 | `prompt` / `negative_prompt` | 每项最多 1024 个文本 token；`negative_prompt` 在 `guidance > 1` 时生效 |
 | 其它 | 与文生图相同：`steps`、`seed`、`guidance`、`n=1`、`response_format=b64_json`、`output_format=png` |
 
-本项目的 [`qwen_image_edit.py`](../qwen_image_edit.py) 适配原生 MLX 编辑推理，
-参考 [Diffusers 的 Qwen-Image-2.1 实现](https://github.com/huggingface/diffusers/pull/14804)。
-视觉编码与 VAE 使用相同尺寸、相同顺序的参考图；文本和参考图的每层注意力缓存仅在
-当前请求中保留。参考图之间采用块因果注意力，避免构建整个序列的平方大小遮罩。
-无需额外下载模型，也不需要 PyTorch。依赖固定在 `requirements-image.txt`。
+编辑使用原生 MLX，与文生图共用权重，无需额外下载编辑模型或安装 PyTorch。
+实现及参考来源见 [`qwen_image_edit.py`](../qwen_image_edit.py)。
 
 编辑默认使用 512×512。实测的 1024 双图样例有偏锐化，提高参考编码分辨率未消除，
 因此高分辨率结果需要按任务评估；编辑不保证未指定区域逐像素保持不变。
 画质样例和耗时见 [验证记录](../diagnostics/README.md#qwen-image)。
 
-图片任务串行运行，最多额外排队 2 条，队满返回 429；单请求含加载和排队最多
-1800 秒，超时返回 504。客户端断连或超时会在去噪步骤之间取消，编码、加载或解码中的
-单次操作会先结束。图片服务故障时，聊天及 GLM 模型发现仍然可用。
+图片任务串行运行，最多额外排队 2 条，队满返回 429。入队后的请求超时默认为
+1800 秒，包含排队、加载和生成，超时返回 504；上传与校验不计入此期限。
+客户端断连或超时会触发取消；取消在计算阶段之间检查，已提交的操作会先结束。
+图片服务故障时，聊天及 GLM 模型发现仍然可用。
 
 | 环境变量 | 默认值 | 作用 |
 | --- | --- | --- |
@@ -98,9 +96,9 @@ curl --fail-with-body http://127.0.0.1:1235/v1/images/edits \
 | `IMAGE_PYTHON` | `~/.venvs/qwen-image/bin/python` | 图片专用 Python |
 | `IMAGE_PORT` | `1238` | 本机监听端口 |
 | `IMAGE_IDLE_TIMEOUT` | `300` | 空闲卸载等待秒数 |
-| `IMAGE_REQUEST_TIMEOUT` | `1800` | 请求总超时秒数 |
+| `IMAGE_REQUEST_TIMEOUT` | `1800` | 从入队开始计算的超时秒数 |
 | `IMAGE_QUEUE_SIZE` | `2` | 等待队列长度 |
-| `IMAGE_MEMORY_GB` | `80` | 图片进程的 MLX 分配上限，GiB |
+| `IMAGE_MEMORY_GB` | `80` | MLX 图求值的内存参考限额，GiB；不是进程总内存硬上限 |
 
 例如 `IMAGE_IDLE_TIMEOUT=60 ./start.sh` 可缩短保留时间；参数对新启动的图片进程生效，
 复用已运行进程时保留该进程原配置。图片日志为 `logs/image.log`。
@@ -118,7 +116,7 @@ curl --fail-with-body http://127.0.0.1:1235/v1/images/edits \
 | `~/models/Qwen-Image-2.1-Text-Encoder-Original` | 原版 encoder，供回退使用 |
 
 文生图与单图、多图编辑共用此 encoder。对外模型名仍为 `qwen-image-2.1`，
-DiT、VAE、processor 和提示词模板沿用原版；权重继续按需加载，空闲 300 秒卸载。
+DiT、VAE、processor 和提示词模板沿用原版。
 
 Heretic 的 Transformers 配置将 RoPE 参数保存在 `text_config.rope_parameters`。
 本地 `config.json` 额外提供等价的 `rope_theta`、`rope_scaling`，供 mlx-vlm 0.7.2 读取；

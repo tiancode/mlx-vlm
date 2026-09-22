@@ -6,7 +6,7 @@ from unittest.mock import Mock, patch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import mlx.core as mx
 from mlx_vlm.generate.ar import SpeculativeGenerationBatch
-from request_cleanup_patch import install, release_idle_batch, bind_prompt_inputs, release_prompt_inputs, OwnedPromptInputs
+from request_cleanup_patch import install, release_idle_batch, bind_prompt_inputs, release_prompt_inputs, OwnedPromptInputs, allocator_cache_limit
 
 install()
 
@@ -97,14 +97,79 @@ class CleanupTests(unittest.TestCase):
 
     def test_idle_only_releases_wired_limit(self):
         batch = Mock(has_work=True)
-        with patch("request_cleanup_patch.mx.clear_cache") as clear:
-            release_idle_batch(batch)
+        with patch("request_cleanup_patch.mx.clear_cache") as clear, patch(
+            "request_cleanup_patch.mx.get_cache_memory", return_value=1024
+        ) as cached:
+            release_idle_batch(batch, 2048)
             batch.close.assert_not_called()
             clear.assert_not_called()
+            cached.assert_not_called()
             batch.has_work = False
-            release_idle_batch(batch)
+            release_idle_batch(batch, 2048)
             batch.close.assert_called_once()
+            clear.assert_not_called()
+
+    def test_idle_checks_limit_after_synchronizing_and_releasing_inputs(self):
+        inputs = OwnedPromptInputs(inputs_embeds=object())
+        batch = Mock(has_work=False)
+        batch._local_prompt_inputs = {0: inputs}
+        events = []
+        batch.close.side_effect = lambda: events.append("synchronized")
+        def memory():
+            self.assertFalse(inputs)
+            self.assertTrue(events)
+            return 2049 if len(events) == 1 else 0
+        with patch("request_cleanup_patch.mx.get_cache_memory", side_effect=memory), patch(
+            "request_cleanup_patch.mx.clear_cache", side_effect=lambda: events.append("cleared")
+        ) as clear:
+            release_idle_batch(batch, 2048)
             clear.assert_called_once()
+        self.assertEqual(events, ["synchronized", "cleared"])
+
+    def test_zero_restores_idle_clearing(self):
+        batch = Mock(has_work=False)
+        with patch("request_cleanup_patch.mx.clear_cache") as clear:
+            release_idle_batch(batch, 0)
+            clear.assert_called_once()
+
+    def test_allocator_budget_validation(self):
+        for raw, expected in (("0", 0), ("2", 2 << 30), ("0.5", 1 << 29)):
+            with self.subTest(raw=raw), patch.dict("os.environ", {"GLM_ALLOCATOR_CACHE_GB": raw}):
+                self.assertEqual(allocator_cache_limit(), expected)
+        for raw in ("-1", "nan", "inf", "1e999", "bad", "", "1e20"):
+            with self.subTest(raw=raw), patch.dict("os.environ", {"GLM_ALLOCATOR_CACHE_GB": raw}):
+                with self.assertRaisesRegex(ValueError, "GLM_ALLOCATOR_CACHE_GB"):
+                    allocator_cache_limit()
+
+    def test_real_allocator_reuses_small_pool_and_enforces_overshoot(self):
+        limit = 1 << 20
+        original = mx.set_cache_limit(limit)
+        try:
+            mx.clear_cache()
+            # A small freed GPU buffer remains reusable at idle.
+            small = mx.ones((65536,), dtype=mx.float32)
+            mx.eval(small)
+            del small
+            batch = Mock(has_work=False)
+            batch.close.side_effect = mx.synchronize
+            release_idle_batch(batch, limit)
+            self.assertGreater(mx.get_cache_memory(), 0)
+            self.assertLessEqual(mx.get_cache_memory(), limit)
+            # MLX can cache a single buffer larger than the budget. It must
+            # not survive our idle cleanup, even with no future allocation.
+            mx.clear_cache()
+            large = mx.ones((2 * limit,), dtype=mx.float32)
+            mx.eval(large)
+            del large
+            mx.synchronize()
+            self.assertGreater(mx.get_cache_memory(), limit)
+            release_idle_batch(batch, limit)
+            self.assertLessEqual(mx.get_cache_memory(), limit)
+            release_idle_batch(batch, 0)
+            self.assertEqual(mx.get_cache_memory(), 0)
+        finally:
+            mx.clear_cache()
+            mx.set_cache_limit(original)
 
 
 if __name__ == "__main__":

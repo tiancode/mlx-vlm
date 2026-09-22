@@ -2,6 +2,9 @@
 
 from functools import wraps
 import logging
+import math
+import os
+import sys
 
 import mlx.core as mx
 
@@ -62,18 +65,37 @@ def release_speculative_state(batch):
         batch.first_tokens = None
 
 
-def release_idle_batch(batch):
+def allocator_cache_limit():
+    """Read the allocator budget in GiB; zero selects idle-only clearing."""
+    raw = os.environ.get("GLM_ALLOCATOR_CACHE_GB", "2")
+    try:
+        gib = float(raw)
+    except ValueError:
+        raise ValueError("GLM_ALLOCATOR_CACHE_GB must be a finite, nonnegative GiB value") from None
+    if not math.isfinite(gib) or gib < 0 or gib >= sys.maxsize / (1 << 30):
+        raise ValueError("GLM_ALLOCATOR_CACHE_GB must be a finite, nonnegative GiB value within size_t range")
+    return int(gib * (1 << 30))
+
+
+def release_idle_batch(batch, cache_limit):
     if not batch.has_work:
         release_prompt_inputs(batch)
         # Restore the wired limit and synchronize through upstream's close().
         # The server constructs a new BatchGenerator for the next admission.
         batch.close()
-        mx.clear_cache()
+        # MLX 0.32.2 may recycle one buffer beyond set_cache_limit(); it
+        # reclaims that excess on the next allocation, which need not happen
+        # while idle. Enforce the idle bound after the stream has synchronized.
+        # Keep upstream's prefill, decode and error-path clears unchanged.
+        if cache_limit == 0 or mx.get_cache_memory() > cache_limit:
+            mx.clear_cache()
+        cached = mx.get_cache_memory()
         logging.getLogger(__name__).info(
             "GPU idle: active=%.2f GiB allocator_cache=%.2f GiB "
+            "allocator_cache_bytes=%d allocator_limit_bytes=%d "
             "(model weights and APC remain resident)",
             mx.get_active_memory() / (1 << 30),
-            mx.get_cache_memory() / (1 << 30),
+            cached / (1 << 30), cached, cache_limit,
         )
 
 
@@ -83,6 +105,11 @@ def install():
 
     if getattr(SpeculativeGenerationBatch, "_local_request_cleanup", False):
         return
+    cache_limit = allocator_cache_limit()
+    if cache_limit:
+        mx.set_cache_limit(cache_limit)
+    # Zero clears at idle but leaves the inference-time cache limit unchanged.
+    # set_cache_limit(0) would disable reuse during inference as well.
     original_refresh = SpeculativeGenerationBatch._refresh_uids
 
     @wraps(original_refresh)
@@ -106,7 +133,7 @@ def install():
                     release_prompt_inputs(self, [r.uid for r in result[1] if r.finish_reason is not None])
                 elif result:
                     release_prompt_inputs(self, [args[0] if args else kwargs["uid"]])
-                release_idle_batch(self)
+                release_idle_batch(self, cache_limit)
                 return result
             return call
 
@@ -114,5 +141,6 @@ def install():
 
     SpeculativeGenerationBatch._local_request_cleanup = True
     logging.getLogger(__name__).warning(
-        "Request cleanup patch: completed/cancelled MTP state and idle wired buffers released"
+        "Request cleanup patch: completed/cancelled MTP state released; idle wired limit restored; "
+        "idle allocator cache limit=%.2f GiB", cache_limit / (1 << 30),
     )

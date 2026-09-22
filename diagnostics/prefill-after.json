@@ -1,0 +1,533 @@
+{
+  "run_id": "prefill-20260922-a",
+  "model": "glm-5.3-flash",
+  "model_path": "/Users/deht/models/GLM-5.3-Flash-FineTunning-MXFP8",
+  "health": {
+    "status": "healthy",
+    "loaded_model": "/Users/deht/models/GLM-5.3-Flash-FineTunning-MXFP8",
+    "loaded_adapter": null,
+    "loaded_models": {
+      "text_generation": {
+        "model": "glm-5.3-flash",
+        "adapter": null,
+        "model_kind": "text_generation"
+      }
+    },
+    "loaded_context_size": 1048576,
+    "configured_context_limit": 393216,
+    "effective_context_limit": 393216,
+    "loaded_tool_parser": "glm47",
+    "continuous_batching_enabled": true,
+    "apc_enabled": true
+  },
+  "settings": {
+    "kv_bits": null,
+    "kv_quant_scheme": "uniform",
+    "kv_group_size": null,
+    "kv_key_bits": null,
+    "kv_value_bits": null,
+    "kv_key_scheme": null,
+    "kv_value_scheme": null,
+    "quantized_kv_start": null,
+    "apc_enabled": true,
+    "apc_disk_enabled": false,
+    "apc_disk_path": null,
+    "apc_block_size": 16,
+    "apc_num_blocks": 2048,
+    "apc_disk_max_gb": null,
+    "apc_memory_max_gb": 32.0,
+    "apc_memory_reserve_gb": null,
+    "apc_disk_queue_max_gb": 1.0,
+    "apc_disk_shard_max_blocks": 256,
+    "apc_checkpoint_entries": 2,
+    "apc_checkpoint_interval_tokens": 2048,
+    "apc_checkpoint_guard_tokens": 1,
+    "max_kv_size": null,
+    "token_queue_timeout": 3000.0,
+    "spec_draft_model": null,
+    "spec_draft_kind": null,
+    "vision_cache_size": 20
+  },
+  "requests": [
+    {
+      "name": "cold_2048_t0",
+      "input_sha256": "b13e1506f94d48549e792fffd2279884ec23d572000713ef6938227c03208dfd",
+      "seconds": 9.516650833014864,
+      "usage": {
+        "prompt_tokens": 1995,
+        "completion_tokens": 32,
+        "total_tokens": 2027,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 1995,
+        "cache_n": 0,
+        "predicted_n": 32,
+        "prompt_ms": 6572.43479101453,
+        "prompt_per_token_ms": 3.294453529330591,
+        "prompt_per_second": 303.5404782908541,
+        "predicted_ms": 1517.29118247186,
+        "predicted_per_token_ms": 47.41534945224563,
+        "predicted_per_second": 21.09021680852843,
+        "peak_memory": 344.779915282,
+        "draft_kind": "mtp",
+        "draft_rounds": 19,
+        "draft_n": 19,
+        "draft_n_accepted": 12
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "ALPHA=CEDAR-7319; BRAVO=OTTER-2846; CHARLIE=MAPLE-9502",
+          "reasoning_content": null,
+          "reasoning": null,
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "passed": true,
+      "cache_expected": true,
+      "same_input": true,
+      "same_output": true,
+      "wall_speedup": 1.0582123954855
+    },
+    {
+      "name": "cold_8192_t0",
+      "input_sha256": "923b12a78907176b21ee4e264eefa89967e7de109e3dae5260cabd870c776c96",
+      "seconds": 22.28155274997698,
+      "usage": {
+        "prompt_tokens": 8139,
+        "completion_tokens": 38,
+        "total_tokens": 8177,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 8139,
+        "cache_n": 0,
+        "predicted_n": 38,
+        "prompt_ms": 20314.151584054343,
+        "prompt_per_token_ms": 2.495902639642996,
+        "prompt_per_second": 400.65665387614484,
+        "predicted_ms": 1926.8579552692638,
+        "predicted_per_token_ms": 50.70678829655957,
+        "predicted_per_second": 19.721225374233562,
+        "peak_memory": 350.889920934,
+        "draft_kind": "mtp",
+        "draft_rounds": 23,
+        "draft_n": 23,
+        "draft_n_accepted": 14
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "ALPHA=CEDAR-7319; BRAVO=OTTER-2846; CHARLIE=MAPLE-9502",
+          "reasoning_content": "The records state codes directly.",
+          "reasoning": "The records state codes directly.",
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "passed": true,
+      "cache_expected": true,
+      "same_input": true,
+      "same_output": true,
+      "wall_speedup": 1.0229689426830397
+    },
+    {
+      "name": "cold_16384_t0",
+      "input_sha256": "336ec333d4f260a897617de91da0f5f807d08947a5ee7f953fcfb7de8da33c2e",
+      "seconds": 43.28543729096418,
+      "usage": {
+        "prompt_tokens": 16331,
+        "completion_tokens": 32,
+        "total_tokens": 16363,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 16331,
+        "cache_n": 0,
+        "predicted_n": 32,
+        "prompt_ms": 41539.84487405978,
+        "prompt_per_token_ms": 2.5436191827848744,
+        "prompt_per_second": 393.1406111291993,
+        "predicted_ms": 1695.600859880928,
+        "predicted_per_token_ms": 52.987526871279,
+        "predicted_per_second": 18.872365989627518,
+        "peak_memory": 363.228458086,
+        "draft_kind": "mtp",
+        "draft_rounds": 20,
+        "draft_n": 20,
+        "draft_n_accepted": 11
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "ALPHA=CEDAR-7319; BRAVO=OTTER-2846; CHARLIE=MAPLE-9502",
+          "reasoning_content": null,
+          "reasoning": null,
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "passed": true,
+      "cache_expected": true,
+      "same_input": true,
+      "same_output": true,
+      "wall_speedup": 1.0207879017371526
+    },
+    {
+      "name": "warm_16384_t0",
+      "input_sha256": "e8b6648a3b5687d93c8696b74d864423a58fe13acd7d59e61b2e93f61907bafc",
+      "seconds": 7.215800332953222,
+      "usage": {
+        "prompt_tokens": 16351,
+        "completion_tokens": 32,
+        "total_tokens": 16383,
+        "prompt_tokens_details": {
+          "cached_tokens": 14336
+        }
+      },
+      "timings": {
+        "prompt_n": 2015,
+        "cache_n": 14336,
+        "predicted_n": 32,
+        "prompt_ms": 5524.827790970448,
+        "prompt_per_token_ms": 2.7418500203327287,
+        "prompt_per_second": 364.7172502450182,
+        "predicted_ms": 1607.362322569374,
+        "predicted_per_token_ms": 50.23007258029294,
+        "predicted_per_second": 19.908392495382056,
+        "peak_memory": 363.228458086,
+        "draft_kind": "mtp",
+        "draft_rounds": 19,
+        "draft_n": 19,
+        "draft_n_accepted": 12
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "ALPHA=CEDAR-7319; BRAVO=OTTER-2846; CHARLIE=MAPLE-9502",
+          "reasoning_content": null,
+          "reasoning": null,
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "passed": true,
+      "cache_expected": true,
+      "same_input": true,
+      "same_output": true,
+      "wall_speedup": 1.0235360701883862
+    },
+    {
+      "name": "decode_t0",
+      "input_sha256": "6ab3a11942a4182765c4e48cc3ffd61efc67e562f7118db19ff78a525f9abd0d",
+      "seconds": 11.902339749969542,
+      "usage": {
+        "prompt_tokens": 55,
+        "completion_tokens": 256,
+        "total_tokens": 311,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 55,
+        "cache_n": 0,
+        "predicted_n": 256,
+        "prompt_ms": 576.3589999405667,
+        "prompt_per_token_ms": 10.47925454437394,
+        "prompt_per_second": 95.42663514523329,
+        "predicted_ms": 11288.286953930761,
+        "predicted_per_token_ms": 44.094870913792036,
+        "predicted_per_second": 22.678374588170502,
+        "peak_memory": 363.228458086,
+        "draft_kind": "mtp",
+        "draft_rounds": 110,
+        "draft_n": 187,
+        "draft_n_accepted": 146
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": "# Merge Sort Implementation\n\n```python\ndef merge_sort(arr):\n    \"\"\"Sort a list using merge sort. Returns a new sorted list (input is not mutated).\"\"\"\n    if len(arr) <= 1:\n        return list(arr)  # copy, so we never mutate the caller's list\n\n    mid = len(arr) // 2\n    left = merge_sort(arr[:mid])\n    right = merge_sort(arr[mid:])\n\n    return _merge(left, right)\n\n\ndef _merge(left, right):\n    \"\"\"Merge two sorted lists into one sorted list.\"\"\"\n    merged = []\n    i = j = 0\n\n    while i < len(left) and j < len(right):\n        if left[i] <= right[j]:   # <= keeps the sort stable\n            merged.append(left[i])\n            i += 1\n        else:\n            merged.append(right[j])\n            j += 1\n\n    # One of these is empty; extend with the remainder\n    merged.extend(left[i:])\n    merged.extend(right[j:])\n    return merged\n```\n\n# Unit Tests\n\n```python\nimport unittest\n\n\nclass TestMergeSort(unittest.TestCase):",
+          "reasoning_content": "User wants merge sort + tests + complexity explanation. \"Benchmark prefill...\" seems like noise; just answer.",
+          "reasoning": "User wants merge sort + tests + complexity explanation. \"Benchmark prefill...\" seems like noise; just answer.",
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "passed": true,
+      "cache_expected": true,
+      "same_input": true,
+      "same_output": true,
+      "wall_speedup": 1.0088102285966376
+    },
+    {
+      "name": "cold_2048_t1",
+      "input_sha256": "bd90fc1aae185f135d6c1c019e700b47f7028f1bbc566a44cf343dd6487783ee",
+      "seconds": 7.914417541993316,
+      "usage": {
+        "prompt_tokens": 1995,
+        "completion_tokens": 69,
+        "total_tokens": 2064,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 1995,
+        "cache_n": 0,
+        "predicted_n": 69,
+        "prompt_ms": 4912.498541991226,
+        "prompt_per_token_ms": 2.4624052842061284,
+        "prompt_per_second": 406.10699075980773,
+        "predicted_ms": 2955.8970882113927,
+        "predicted_per_token_ms": 42.83908823494772,
+        "predicted_per_second": 23.343167214847714,
+        "peak_memory": 363.228458086,
+        "draft_kind": "mtp",
+        "draft_rounds": 28,
+        "draft_n": 48,
+        "draft_n_accepted": 41
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "ALPHA=CEDAR-7319; BRAVO=OTTER-2846; CHARLIE=MAPLE-9502",
+          "reasoning_content": "The three records are explicitly given: ALPHA=CEDAR-7319, BRAVO=OTTER-2846, CHARLIE=MAPLE-9502.",
+          "reasoning": "The three records are explicitly given: ALPHA=CEDAR-7319, BRAVO=OTTER-2846, CHARLIE=MAPLE-9502.",
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "passed": true,
+      "cache_expected": true,
+      "same_input": true,
+      "same_output": true,
+      "wall_speedup": 1.018948356865161
+    },
+    {
+      "name": "cold_8192_t1",
+      "input_sha256": "8d94c3861be4d5ac8eb5ee83f7cd805724d07a68e03613438c92f66f68e39ed2",
+      "seconds": 22.04476420796709,
+      "usage": {
+        "prompt_tokens": 8139,
+        "completion_tokens": 32,
+        "total_tokens": 8171,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 8139,
+        "cache_n": 0,
+        "predicted_n": 32,
+        "prompt_ms": 20398.741540964693,
+        "prompt_per_token_ms": 2.506295803042719,
+        "prompt_per_second": 398.99520191749497,
+        "predicted_ms": 1594.9414616390582,
+        "predicted_per_token_ms": 49.84192067622057,
+        "predicted_per_second": 20.063432276138126,
+        "peak_memory": 363.228458086,
+        "draft_kind": "mtp",
+        "draft_rounds": 19,
+        "draft_n": 19,
+        "draft_n_accepted": 12
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "ALPHA=CEDAR-7319; BRAVO=OTTER-2846; CHARLIE=MAPLE-9502",
+          "reasoning_content": null,
+          "reasoning": null,
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "passed": true,
+      "cache_expected": true,
+      "same_input": true,
+      "same_output": true,
+      "wall_speedup": 1.0221135180842276
+    },
+    {
+      "name": "cold_16384_t1",
+      "input_sha256": "0d3aedf44ec570cbfc069fc7013494c59ff9ab6328484f65964e0223ab8398d0",
+      "seconds": 43.16477658401709,
+      "usage": {
+        "prompt_tokens": 16330,
+        "completion_tokens": 32,
+        "total_tokens": 16362,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 16330,
+        "cache_n": 0,
+        "predicted_n": 32,
+        "prompt_ms": 41484.50070800027,
+        "prompt_per_token_ms": 2.540385836374787,
+        "prompt_per_second": 393.6409917270805,
+        "predicted_ms": 1620.2375060848651,
+        "predicted_per_token_ms": 50.632422065152035,
+        "predicted_per_second": 19.750190870056244,
+        "peak_memory": 363.228458086,
+        "draft_kind": "mtp",
+        "draft_rounds": 19,
+        "draft_n": 19,
+        "draft_n_accepted": 12
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "ALPHA=CEDAR-7319; BRAVO=OTTER-2846; CHARLIE=MAPLE-9502",
+          "reasoning_content": null,
+          "reasoning": null,
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "passed": true,
+      "cache_expected": true,
+      "same_input": true,
+      "same_output": true,
+      "wall_speedup": 1.025507401592744
+    },
+    {
+      "name": "warm_16384_t1",
+      "input_sha256": "5e032a055c6f1500b0ce9f909b5f0d95ae89b6a528fc06b5356fad3f58159731",
+      "seconds": 7.233902624982875,
+      "usage": {
+        "prompt_tokens": 16350,
+        "completion_tokens": 32,
+        "total_tokens": 16382,
+        "prompt_tokens_details": {
+          "cached_tokens": 14336
+        }
+      },
+      "timings": {
+        "prompt_n": 2014,
+        "cache_n": 14336,
+        "predicted_n": 32,
+        "prompt_ms": 5528.711249993648,
+        "prompt_per_token_ms": 2.745139647464572,
+        "prompt_per_second": 364.28019278494855,
+        "predicted_ms": 1615.8191391056582,
+        "predicted_per_token_ms": 50.49434809705182,
+        "predicted_per_second": 19.804196661336565,
+        "peak_memory": 363.228458086,
+        "draft_kind": "mtp",
+        "draft_rounds": 19,
+        "draft_n": 19,
+        "draft_n_accepted": 12
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "ALPHA=CEDAR-7319; BRAVO=OTTER-2846; CHARLIE=MAPLE-9502",
+          "reasoning_content": null,
+          "reasoning": null,
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "passed": true,
+      "cache_expected": true,
+      "same_input": true,
+      "same_output": true,
+      "wall_speedup": 1.0224026088581533
+    },
+    {
+      "name": "decode_t1",
+      "input_sha256": "a0d819a9886bdab726b3478b78729da8d74c2428217f2661d6968db442da733a",
+      "seconds": 11.738154042046517,
+      "usage": {
+        "prompt_tokens": 55,
+        "completion_tokens": 256,
+        "total_tokens": 311,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 55,
+        "cache_n": 0,
+        "predicted_n": 256,
+        "prompt_ms": 576.8781250226311,
+        "prompt_per_token_ms": 10.488693182229657,
+        "prompt_per_second": 95.34076196396306,
+        "predicted_ms": 11118.684528446664,
+        "predicted_per_token_ms": 43.43236143924478,
+        "predicted_per_second": 23.024306458649427,
+        "peak_memory": 363.228458086,
+        "draft_kind": "mtp",
+        "draft_rounds": 101,
+        "draft_n": 193,
+        "draft_n_accepted": 155
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": "# Merge Sort Implementation with Unit Tests\n\n## Implementation\n\n```python\ndef merge_sort(arr):\n    \"\"\"\n    Sort a list using the merge sort algorithm.\n    Returns a new sorted list (does not modify the input).\n    \"\"\"\n    # Base case: lists of length 0 or 1 are already sorted\n    if len(arr) <= 1:\n        return arr[:]  # return a copy for consistency\n\n    # Divide\n    mid = len(arr) // 2\n    left = merge_sort(arr[:mid])\n    right = merge_sort(arr[mid:])\n\n    # Conquer: merge the two sorted halves\n    return _merge(left, right)\n\n\ndef _merge(left, right):\n    \"\"\"Merge two sorted lists into one sorted list.\"\"\"\n    merged = []\n    i = j = 0\n\n    while i < len(left) and j < len(right):\n        if left[i] <= right[j]:  # <= keeps the sort stable\n            merged.append(left[i])\n            i += 1\n        else:\n            merged.append(right[j])\n            j += 1\n\n    # Append remaining elements (only one of these is non-empty)\n    merged.extend(left[i:])",
+          "reasoning_content": "Simple task: write merge sort + tests + complexity explanation.",
+          "reasoning": "Simple task: write merge sort + tests + complexity explanation.",
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "passed": true,
+      "cache_expected": true,
+      "same_input": true,
+      "same_output": true,
+      "wall_speedup": 1.0049811778516111
+    }
+  ]
+}

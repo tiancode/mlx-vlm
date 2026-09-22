@@ -18,7 +18,8 @@ def widen_sparse_addresses(source):
 
     64 heads * 131073 tokens * 256 elements exceeds INT_MAX. Casting only
     the completed product, or using uint32, cannot support the 1M context.
-    Loop counters and token indices stay int32; device offsets use size_t.
+    Grid coordinates, strides and address products use size_t. The selected
+    token-index input stays int32, including its -1 sentinel.
     """
     declarations = (
         "uint row_idx",
@@ -68,8 +69,8 @@ def install():
     sparse_attention._indexed_sparse_attention_kernel.cache_clear()
     sparse_attention._local_wide_addresses = True
 
-    # Old disk checkpoints may already contain state computed by the broken
-    # kernel. Keep those files intact, but never mix them with corrected state.
+    # Isolate checkpoints by kernel address semantics: narrow-address state
+    # must not be restored into the wide-address computation.
     original_namespace = apc.apc_disk_namespace
 
     @wraps(original_namespace)

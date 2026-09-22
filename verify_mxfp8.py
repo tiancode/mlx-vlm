@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""抽查 MXFP8 产物：和官方 FP8 反量化出来的参考值逐张量比相对误差。
+"""抽查 MXFP8 产物：与源 FP8 权重反量化后的参考值逐张量比较相对误差。
 
 只挑没有被融合/堆叠的张量（o_proj、shared_experts.down_proj），这样源里的
 一个权重正好对应产物里的一个权重，误差就只反映 fp8 -> mxfp8 这一步本身。
@@ -11,7 +11,7 @@ from pathlib import Path
 
 import mlx.core as mx
 
-# 源权重仍在外置盘；抽查同样避开 Metal 缺页看门狗。
+# CPU 抽查避免外置权重的 mmap 缺页阻塞 Metal 命令。
 mx.set_default_device(mx.cpu)
 
 from mlx_vlm.fp8 import _dequantize_fp8_weight

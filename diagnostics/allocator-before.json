@@ -1,0 +1,1042 @@
+{
+  "run_id": "allocator-20260922-a",
+  "label": "idle-clear-baseline",
+  "health": {
+    "status": "healthy",
+    "loaded_model": "/Users/deht/models/GLM-5.3-Flash-FineTunning-MXFP8",
+    "loaded_adapter": null,
+    "loaded_models": {
+      "text_generation": {
+        "model": "glm-5.3-flash",
+        "adapter": null,
+        "model_kind": "text_generation"
+      }
+    },
+    "loaded_context_size": 1048576,
+    "configured_context_limit": 393216,
+    "effective_context_limit": 393216,
+    "loaded_tool_parser": "glm47",
+    "continuous_batching_enabled": true,
+    "apc_enabled": true
+  },
+  "settings": {
+    "kv_bits": null,
+    "kv_quant_scheme": "uniform",
+    "kv_group_size": null,
+    "kv_key_bits": null,
+    "kv_value_bits": null,
+    "kv_key_scheme": null,
+    "kv_value_scheme": null,
+    "quantized_kv_start": null,
+    "apc_enabled": true,
+    "apc_disk_enabled": false,
+    "apc_disk_path": null,
+    "apc_block_size": 16,
+    "apc_num_blocks": 2048,
+    "apc_disk_max_gb": null,
+    "apc_memory_max_gb": 32.0,
+    "apc_memory_reserve_gb": null,
+    "apc_disk_queue_max_gb": 1.0,
+    "apc_disk_shard_max_blocks": 256,
+    "apc_checkpoint_entries": 2,
+    "apc_checkpoint_interval_tokens": 2048,
+    "apc_checkpoint_guard_tokens": 1,
+    "max_kv_size": null,
+    "token_queue_timeout": 3000.0,
+    "spec_draft_model": null,
+    "spec_draft_kind": null,
+    "vision_cache_size": 20
+  },
+  "requests": [
+    {
+      "name": "short_code_t0_r0",
+      "seconds": 3.184658957994543,
+      "input_sha256": "ad858ee23c822f1c429756243bd471112d9f9c435260090dcf01e9406361bba0",
+      "usage": {
+        "prompt_tokens": 42,
+        "completion_tokens": 64,
+        "total_tokens": 106,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 42,
+        "cache_n": 0,
+        "predicted_n": 64,
+        "prompt_ms": 483.6522920522839,
+        "prompt_per_token_ms": 11.515530763149616,
+        "prompt_per_second": 86.83924523913909,
+        "predicted_ms": 2659.1887410789254,
+        "predicted_per_token_ms": 41.54982407935821,
+        "predicted_per_second": 24.06749058889027,
+        "peak_memory": 345.114462555,
+        "draft_kind": "mtp",
+        "draft_rounds": 34,
+        "draft_n": 34,
+        "draft_n_accepted": 30
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": "```python\ndef remove_duplicates(items):\n    seen = set()\n    result = []\n    for item in items:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result\n```\n\n**Explanation:** We iterate through the list once, tracking items we've",
+          "reasoning_content": "Simple task.",
+          "reasoning": "Simple task.",
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "idle": "2026-09-22 15:16:56,012 - INFO - GPU idle: active=315.13 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)",
+      "cache_expected": true
+    },
+    {
+      "name": "short_chinese_t0_r0",
+      "seconds": 3.808657707995735,
+      "input_sha256": "cd3a067925b5b4d6be56cd66617c47e9b3e8702bbcf7bae2de34c789447e2e69",
+      "usage": {
+        "prompt_tokens": 44,
+        "completion_tokens": 64,
+        "total_tokens": 108,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 44,
+        "cache_n": 0,
+        "predicted_n": 64,
+        "prompt_ms": 512.1369999833405,
+        "prompt_per_token_ms": 11.639477272348648,
+        "prompt_per_second": 85.91451115898928,
+        "predicted_ms": 3265.5845506205446,
+        "predicted_per_token_ms": 51.02475860344601,
+        "predicted_per_second": 19.59832887739451,
+        "peak_memory": 345.114462555,
+        "draft_kind": "mtp",
+        "draft_rounds": 42,
+        "draft_n": 42,
+        "draft_n_accepted": 21
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": "# 数据库索引如何加快查询\n\n**原理**：索引类似书的目录，通过额外的数据结构（如 B+ 树、哈希表）将某些列的值与数据行的物理位置关联起来。查询时无需全表扫描，而是先在索引中快速定位（B+ �",
+          "reasoning_content": null,
+          "reasoning": null,
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "idle": "2026-09-22 15:17:00,208 - INFO - GPU idle: active=315.13 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)",
+      "cache_expected": true
+    },
+    {
+      "name": "short_reasoning_t0_r0",
+      "seconds": 3.6222967090434395,
+      "input_sha256": "8aa509ba5fcd682063c99ec94ec3655e5fd6eddf33052ce577e50196ed9b6892",
+      "usage": {
+        "prompt_tokens": 49,
+        "completion_tokens": 64,
+        "total_tokens": 113,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 49,
+        "cache_n": 0,
+        "predicted_n": 64,
+        "prompt_ms": 536.455457971897,
+        "prompt_per_token_ms": 10.948070570855041,
+        "prompt_per_second": 91.34029539982225,
+        "predicted_ms": 3049.954539726651,
+        "predicted_per_token_ms": 47.65553968322892,
+        "predicted_per_second": 20.983919322855197,
+        "peak_memory": 345.114462555,
+        "draft_kind": "mtp",
+        "draft_rounds": 39,
+        "draft_n": 39,
+        "draft_n_accepted": 25
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": null,
+          "reasoning_content": "We need answer benchmark allocator-20260922-a/short_reasoning_t0_r0. Need solve positive integers n such that n^2 + n =42. Need justify. Need maybe short reasoning. Let's craft concise. Solve n(n+1)=42. Positive consecutive product 42. 6",
+          "reasoning": "We need answer benchmark allocator-20260922-a/short_reasoning_t0_r0. Need solve positive integers n such that n^2 + n =42. Need justify. Need maybe short reasoning. Let's craft concise. Solve n(n+1)=42. Positive consecutive product 42. 6",
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "idle": "2026-09-22 15:17:03,837 - INFO - GPU idle: active=315.13 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)",
+      "cache_expected": true
+    },
+    {
+      "name": "short_code_t1_r0",
+      "seconds": 3.138801666966174,
+      "input_sha256": "3034b1e0923cb69c538a8413a73889fd585769657c3a625bbd2dd466919155eb",
+      "usage": {
+        "prompt_tokens": 42,
+        "completion_tokens": 64,
+        "total_tokens": 106,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 42,
+        "cache_n": 0,
+        "predicted_n": 64,
+        "prompt_ms": 488.9625000068918,
+        "prompt_per_token_ms": 11.641964285878377,
+        "prompt_per_second": 85.89615767959306,
+        "predicted_ms": 2606.2272162073186,
+        "predicted_per_token_ms": 40.722300253239354,
+        "predicted_per_second": 24.556569589176203,
+        "peak_memory": 345.114462555,
+        "draft_kind": "mtp",
+        "draft_rounds": 33,
+        "draft_n": 33,
+        "draft_n_accepted": 31
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": "```python\ndef dedupe(items):\n    seen = set()\n    result = []\n    for item in items:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result\n```\n\n**Explanation:** We iterate through the list once, tracking seen items in a",
+          "reasoning_content": "Simple.",
+          "reasoning": "Simple.",
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "idle": "2026-09-22 15:17:06,982 - INFO - GPU idle: active=315.13 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)",
+      "cache_expected": true
+    },
+    {
+      "name": "short_chinese_t1_r0",
+      "seconds": 3.652543791977223,
+      "input_sha256": "2aab59a462d1303842fabf55e2b8b04fe9d8842ac76762d7f13df5b9eaff2bb6",
+      "usage": {
+        "prompt_tokens": 44,
+        "completion_tokens": 64,
+        "total_tokens": 108,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 44,
+        "cache_n": 0,
+        "predicted_n": 64,
+        "prompt_ms": 503.0153750558384,
+        "prompt_per_token_ms": 11.432167614905417,
+        "prompt_per_second": 87.4724753594573,
+        "predicted_ms": 3114.0480843328296,
+        "predicted_per_token_ms": 48.65700131770046,
+        "predicted_per_second": 20.55202690093069,
+        "peak_memory": 345.114462555,
+        "draft_kind": "mtp",
+        "draft_rounds": 40,
+        "draft_n": 40,
+        "draft_n_accepted": 24
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": "# 数据库索引如何加快查询\n\n**原理**：索引通过额外的数据结构（如 B+ 树、哈希表）存储列值与数据行位置的映射，使查询无需全表扫描，可以快速定位到目标数据，将查找复杂度从 O(n) 降到 O(log",
+          "reasoning_content": null,
+          "reasoning": null,
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "idle": "2026-09-22 15:17:10,640 - INFO - GPU idle: active=315.13 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)",
+      "cache_expected": true
+    },
+    {
+      "name": "short_reasoning_t1_r0",
+      "seconds": 3.4830460000084713,
+      "input_sha256": "ce65162bf9aaf4d052df969d1264123f262762b101f8424e0ee11074bea8e396",
+      "usage": {
+        "prompt_tokens": 49,
+        "completion_tokens": 64,
+        "total_tokens": 113,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 49,
+        "cache_n": 0,
+        "predicted_n": 64,
+        "prompt_ms": 536.5171669400297,
+        "prompt_per_token_ms": 10.949329937551626,
+        "prompt_per_second": 91.3297896495399,
+        "predicted_ms": 2908.515766854324,
+        "predicted_per_token_ms": 45.44555885709881,
+        "predicted_per_second": 22.004350373255345,
+        "peak_memory": 345.114462555,
+        "draft_kind": "mtp",
+        "draft_rounds": 37,
+        "draft_n": 37,
+        "draft_n_accepted": 27
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": null,
+          "reasoning_content": "We need answer benchmark? Need solve simple equation n^2+n=42 positive integers. n(n+1)=42. Consecutive product 42. 6*7=42. n=6. Verify discriminant: n = (-1 ± sqrt(1+168))/2=(-1±13)/2",
+          "reasoning": "We need answer benchmark? Need solve simple equation n^2+n=42 positive integers. n(n+1)=42. Consecutive product 42. 6*7=42. n=6. Verify discriminant: n = (-1 ± sqrt(1+168))/2=(-1±13)/2",
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "idle": "2026-09-22 15:17:14,129 - INFO - GPU idle: active=315.13 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)",
+      "cache_expected": true
+    },
+    {
+      "name": "short_code_t0_r1",
+      "seconds": 3.1918324590078555,
+      "input_sha256": "89310451bdef6f58c55766f35a4093489faab0e55059041e0df79e6adcdc6847",
+      "usage": {
+        "prompt_tokens": 42,
+        "completion_tokens": 64,
+        "total_tokens": 106,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 42,
+        "cache_n": 0,
+        "predicted_n": 64,
+        "prompt_ms": 485.10245897341514,
+        "prompt_per_token_ms": 11.550058546986074,
+        "prompt_per_second": 86.57964770758193,
+        "predicted_ms": 2664.2604017896315,
+        "predicted_per_token_ms": 41.62906877796299,
+        "predicted_per_second": 24.021675943166088,
+        "peak_memory": 345.114462555,
+        "draft_kind": "mtp",
+        "draft_rounds": 34,
+        "draft_n": 34,
+        "draft_n_accepted": 30
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": "```python\ndef remove_duplicates(items):\n    seen = set()\n    result = []\n    for item in items:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result\n```\n\n**Explanation:** We iterate through the list once, tracking items we've",
+          "reasoning_content": "Simple task.",
+          "reasoning": "Simple task.",
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "idle": "2026-09-22 15:17:17,325 - INFO - GPU idle: active=315.13 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)",
+      "cache_expected": true
+    },
+    {
+      "name": "short_chinese_t0_r1",
+      "seconds": 3.813114708987996,
+      "input_sha256": "1c95f9eaebcfcf796464f77e56ec16f55f30d2c2cceb8084aa982a5fbbff477b",
+      "usage": {
+        "prompt_tokens": 44,
+        "completion_tokens": 64,
+        "total_tokens": 108,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 44,
+        "cache_n": 0,
+        "predicted_n": 64,
+        "prompt_ms": 502.95620900578797,
+        "prompt_per_token_ms": 11.430822931949727,
+        "prompt_per_second": 87.48276532260417,
+        "predicted_ms": 3278.6366567606965,
+        "predicted_per_token_ms": 51.22869776188588,
+        "predicted_per_second": 19.52030880519472,
+        "peak_memory": 345.114462555,
+        "draft_kind": "mtp",
+        "draft_rounds": 42,
+        "draft_n": 42,
+        "draft_n_accepted": 21
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": "# 数据库索引如何加快查询\n\n**原理**：索引就像书的目录，通过额外的数据结构（如 B+ 树、哈希表）把某列的值与数据行的位置关联起来。查询时无需全表扫描，而是沿着索引结构快速定位（B+ 树只需",
+          "reasoning_content": null,
+          "reasoning": null,
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "idle": "2026-09-22 15:17:21,146 - INFO - GPU idle: active=315.13 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)",
+      "cache_expected": true
+    },
+    {
+      "name": "short_reasoning_t0_r1",
+      "seconds": 3.472105583001394,
+      "input_sha256": "f6ca5ec2ad37f0bb4e1ba0c4e461fc63d9eb9cac07ecf1e061b03a29441408ab",
+      "usage": {
+        "prompt_tokens": 49,
+        "completion_tokens": 64,
+        "total_tokens": 113,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 49,
+        "cache_n": 0,
+        "predicted_n": 64,
+        "prompt_ms": 535.9954580198973,
+        "prompt_per_token_ms": 10.938682816732598,
+        "prompt_per_second": 91.41868511538956,
+        "predicted_ms": 2901.2807619477076,
+        "predicted_per_token_ms": 45.33251190543293,
+        "predicted_per_second": 22.059223236649142,
+        "peak_memory": 345.114462555,
+        "draft_kind": "mtp",
+        "draft_rounds": 37,
+        "draft_n": 37,
+        "draft_n_accepted": 27
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": null,
+          "reasoning_content": "We need answer benchmark allocator-20260922-a/short_reasoning_t0_r1. Need solve positive integers n such that n^2 + n = 42. Need justify. Short reasoning. Need maybe mention n(n+1)=42, consecutive product. Factor 42. Positive integer solutions? n",
+          "reasoning": "We need answer benchmark allocator-20260922-a/short_reasoning_t0_r1. Need solve positive integers n such that n^2 + n = 42. Need justify. Short reasoning. Need maybe mention n(n+1)=42, consecutive product. Factor 42. Positive integer solutions? n",
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "idle": "2026-09-22 15:17:24,623 - INFO - GPU idle: active=315.13 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)",
+      "cache_expected": true
+    },
+    {
+      "name": "short_code_t1_r1",
+      "seconds": 3.141075457970146,
+      "input_sha256": "a279b7bfdc6221870e0aca00dde57abab4c06a8f1dbbc9b61cb532985ad84d8d",
+      "usage": {
+        "prompt_tokens": 42,
+        "completion_tokens": 64,
+        "total_tokens": 106,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 42,
+        "cache_n": 0,
+        "predicted_n": 64,
+        "prompt_ms": 486.83762503787875,
+        "prompt_per_token_ms": 11.591372024711399,
+        "prompt_per_second": 86.27106419051354,
+        "predicted_ms": 2612.601565463203,
+        "predicted_per_token_ms": 40.821899460362545,
+        "predicted_per_second": 24.496655305591187,
+        "peak_memory": 345.114462555,
+        "draft_kind": "mtp",
+        "draft_rounds": 33,
+        "draft_n": 33,
+        "draft_n_accepted": 30
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": "Here's a clean solution:\n\n```python\ndef remove_duplicates(items):\n    seen = set()\n    result = []\n    for item in items:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result\n```\n\n**How it works:**\n- `",
+          "reasoning_content": "Simple answer.",
+          "reasoning": "Simple answer.",
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "idle": "2026-09-22 15:17:27,769 - INFO - GPU idle: active=315.13 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)",
+      "cache_expected": true
+    },
+    {
+      "name": "short_chinese_t1_r1",
+      "seconds": 3.948535667033866,
+      "input_sha256": "655b1e1c30806bba7213573d21d6704a89baaa7aa0ceabafa53b41ff8d2bc354",
+      "usage": {
+        "prompt_tokens": 44,
+        "completion_tokens": 64,
+        "total_tokens": 108,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 44,
+        "cache_n": 0,
+        "predicted_n": 64,
+        "prompt_ms": 504.05733298975974,
+        "prompt_per_token_ms": 11.455848477039995,
+        "prompt_per_second": 87.29165735774325,
+        "predicted_ms": 3413.629079385409,
+        "predicted_per_token_ms": 53.33795436539702,
+        "predicted_per_second": 18.748375559163733,
+        "peak_memory": 345.114462555,
+        "draft_kind": "mtp",
+        "draft_rounds": 44,
+        "draft_n": 44,
+        "draft_n_accepted": 19
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": "# 数据库索引如何加快查询\n\n**原理**：索引（如 B+ 树）把某几列的值按有序结构单独存储，并指向数据行位置。查询时可以避免**全表扫描**，通过类似“二分查找”的方式快速定位目标数据，将查找",
+          "reasoning_content": null,
+          "reasoning": null,
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "idle": "2026-09-22 15:17:31,723 - INFO - GPU idle: active=315.13 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)",
+      "cache_expected": true
+    },
+    {
+      "name": "short_reasoning_t1_r1",
+      "seconds": 3.7053645420237444,
+      "input_sha256": "f423023012d64d8df8a15a05af6254e32c80f804e81e8cce1e5efd4493638221",
+      "usage": {
+        "prompt_tokens": 49,
+        "completion_tokens": 64,
+        "total_tokens": 113,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 49,
+        "cache_n": 0,
+        "predicted_n": 64,
+        "prompt_ms": 536.9376260205172,
+        "prompt_per_token_ms": 10.957910735112597,
+        "prompt_per_second": 91.25827214449605,
+        "predicted_ms": 3135.2355128952436,
+        "predicted_per_token_ms": 48.98805488898818,
+        "predicted_per_second": 20.413139535058082,
+        "peak_memory": 345.114462555,
+        "draft_kind": "mtp",
+        "draft_rounds": 40,
+        "draft_n": 40,
+        "draft_n_accepted": 24
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": null,
+          "reasoning_content": "We need answer benchmark task. Need find positive integers n such that n^2 + n = 42. Solve. n(n+1)=42. Consecutive product 42 = 6*7. positive n=6. Need justify. Could mention quadratic roots -7,6; positive. Need maybe \"",
+          "reasoning": "We need answer benchmark task. Need find positive integers n such that n^2 + n = 42. Solve. n(n+1)=42. Consecutive product 42 = 6*7. positive n=6. Need justify. Could mention quadratic roots -7,6; positive. Need maybe \"",
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "idle": "2026-09-22 15:17:35,435 - INFO - GPU idle: active=315.13 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)",
+      "cache_expected": true
+    },
+    {
+      "name": "short_code_t0_r2",
+      "seconds": 3.200555292016361,
+      "input_sha256": "da78eb98cd81eb3b2eb9f00dcc01550ac18192a28320874bb643819542980039",
+      "usage": {
+        "prompt_tokens": 42,
+        "completion_tokens": 64,
+        "total_tokens": 106,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 42,
+        "cache_n": 0,
+        "predicted_n": 64,
+        "prompt_ms": 485.96487502800295,
+        "prompt_per_token_ms": 11.570592262571498,
+        "prompt_per_second": 86.42599940495661,
+        "predicted_ms": 2674.0611220399537,
+        "predicted_per_token_ms": 41.78220503187428,
+        "predicted_per_second": 23.933633929495407,
+        "peak_memory": 345.114462555,
+        "draft_kind": "mtp",
+        "draft_rounds": 34,
+        "draft_n": 34,
+        "draft_n_accepted": 30
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": "```python\ndef remove_duplicates(items):\n    seen = set()\n    result = []\n    for item in items:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result\n```\n\n**Explanation:** We iterate through the list once, tracking items we've",
+          "reasoning_content": "Simple task.",
+          "reasoning": "Simple task.",
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "idle": "2026-09-22 15:17:38,641 - INFO - GPU idle: active=315.13 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)",
+      "cache_expected": true
+    },
+    {
+      "name": "short_chinese_t0_r2",
+      "seconds": 3.593841208028607,
+      "input_sha256": "21dc5c18e190a30fca0a820eb8d054a8d059ba82bcd024e789a0af1e0aa3ed0d",
+      "usage": {
+        "prompt_tokens": 44,
+        "completion_tokens": 64,
+        "total_tokens": 108,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 44,
+        "cache_n": 0,
+        "predicted_n": 64,
+        "prompt_ms": 502.5533750304021,
+        "prompt_per_token_ms": 11.42166761432732,
+        "prompt_per_second": 87.55288927735927,
+        "predicted_ms": 3055.8167192789297,
+        "predicted_per_token_ms": 47.747136238733276,
+        "predicted_per_second": 20.9436644535088,
+        "peak_memory": 345.114462555,
+        "draft_kind": "mtp",
+        "draft_rounds": 39,
+        "draft_n": 39,
+        "draft_n_accepted": 24
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": "## 数据库索引如何加快查询\n\n索引类似于书的目录。没有索引时，查询需要**全表扫描**（逐行检查所有数据）；有了索引（通常是 B+ 树或哈希结构），数据库可以",
+          "reasoning_content": "User asks in Chinese to briefly explain how database indexes speed up queries and two costs.",
+          "reasoning": "User asks in Chinese to briefly explain how database indexes speed up queries and two costs.",
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "idle": "2026-09-22 15:17:42,242 - INFO - GPU idle: active=315.13 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)",
+      "cache_expected": true
+    },
+    {
+      "name": "short_reasoning_t0_r2",
+      "seconds": 3.6323960419977084,
+      "input_sha256": "3e46d999d813c13a1c2627cda4d73f3329e54daf6d517de4a98045dd5bd2f437",
+      "usage": {
+        "prompt_tokens": 49,
+        "completion_tokens": 64,
+        "total_tokens": 113,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 49,
+        "cache_n": 0,
+        "predicted_n": 64,
+        "prompt_ms": 536.8305829470046,
+        "prompt_per_token_ms": 10.955726182591931,
+        "prompt_per_second": 91.27646888336322,
+        "predicted_ms": 3060.561142861843,
+        "predicted_per_token_ms": 47.8212678572163,
+        "predicted_per_second": 20.91119798382967,
+        "peak_memory": 345.114462555,
+        "draft_kind": "mtp",
+        "draft_rounds": 39,
+        "draft_n": 39,
+        "draft_n_accepted": 25
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": null,
+          "reasoning_content": "We need answer benchmark allocator-20260922-a/short_reasoning_t0_r2. Need solve positive integers n such that n^2+n=42. Need justify. Short reasoning. Need maybe mention n(n+1)=42, consecutive integers product 42 =6*7, so n=6",
+          "reasoning": "We need answer benchmark allocator-20260922-a/short_reasoning_t0_r2. Need solve positive integers n such that n^2+n=42. Need justify. Short reasoning. Need maybe mention n(n+1)=42, consecutive integers product 42 =6*7, so n=6",
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "idle": "2026-09-22 15:17:45,880 - INFO - GPU idle: active=315.13 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)",
+      "cache_expected": true
+    },
+    {
+      "name": "short_code_t1_r2",
+      "seconds": 3.145170958014205,
+      "input_sha256": "ff11f1436820a978dae1c284c9ba1fa2b18aede2dd965f2d0fa4aea2666bcd33",
+      "usage": {
+        "prompt_tokens": 42,
+        "completion_tokens": 64,
+        "total_tokens": 106,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 42,
+        "cache_n": 0,
+        "predicted_n": 64,
+        "prompt_ms": 488.24379104189575,
+        "prompt_per_token_ms": 11.624852167664184,
+        "prompt_per_second": 86.02259930510006,
+        "predicted_ms": 2614.7759146397075,
+        "predicted_per_token_ms": 40.85587366624543,
+        "predicted_per_second": 24.47628480959854,
+        "peak_memory": 345.114462555,
+        "draft_kind": "mtp",
+        "draft_rounds": 33,
+        "draft_n": 33,
+        "draft_n_accepted": 30
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": "```python\ndef dedupe(items):\n    seen = set()\n    result = []\n    for item in items:\n        if item not in seen:\n            seen.add(item)\n            result.append(item)\n    return result\n```\n\n**Explanation:** We iterate through the list once, tracking items we've already",
+          "reasoning_content": "Simple.",
+          "reasoning": "Simple.",
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "idle": "2026-09-22 15:17:49,030 - INFO - GPU idle: active=315.13 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)",
+      "cache_expected": true
+    },
+    {
+      "name": "short_chinese_t1_r2",
+      "seconds": 3.7409639160032384,
+      "input_sha256": "e51dd6886b97d834820a3930e59f832042bc1c17a4e6a994ddab4fb64a914f63",
+      "usage": {
+        "prompt_tokens": 44,
+        "completion_tokens": 64,
+        "total_tokens": 108,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 44,
+        "cache_n": 0,
+        "predicted_n": 64,
+        "prompt_ms": 505.9317499981262,
+        "prompt_per_token_ms": 11.498448863593778,
+        "prompt_per_second": 86.96825214105057,
+        "predicted_ms": 3200.4764871228313,
+        "predicted_per_token_ms": 50.00744511129424,
+        "predicted_per_second": 19.997022398853744,
+        "peak_memory": 345.114462555,
+        "draft_kind": "mtp",
+        "draft_rounds": 41,
+        "draft_n": 41,
+        "draft_n_accepted": 23
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": "# 数据库索引如何加快查询\n\n**原理**：索引相当于一本书的目录，通过额外的数据结构（如 B+ 树、哈希表）把某列的值与数据行的物理位置关联起来。没有索引时，查询需要**全表扫描**逐行比较；有索引",
+          "reasoning_content": null,
+          "reasoning": null,
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "idle": "2026-09-22 15:17:52,777 - INFO - GPU idle: active=315.13 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)",
+      "cache_expected": true
+    },
+    {
+      "name": "short_reasoning_t1_r2",
+      "seconds": 3.715151624986902,
+      "input_sha256": "5ba4e0d2a0cf50c15cf2188980c0dc325a7e285e24116edecbb997455cc5a8d6",
+      "usage": {
+        "prompt_tokens": 49,
+        "completion_tokens": 64,
+        "total_tokens": 113,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 49,
+        "cache_n": 0,
+        "predicted_n": 64,
+        "prompt_ms": 537.097290973179,
+        "prompt_per_token_ms": 10.961169203534267,
+        "prompt_per_second": 91.23114345115344,
+        "predicted_ms": 3145.9282966005426,
+        "predicted_per_token_ms": 49.15512963438348,
+        "predicted_per_second": 20.34375674396576,
+        "peak_memory": 345.114462555,
+        "draft_kind": "mtp",
+        "draft_rounds": 40,
+        "draft_n": 40,
+        "draft_n_accepted": 24
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": null,
+          "reasoning_content": "We need answer benchmark task. Need find all positive integers n such that n^2+n=42. Simple. Need justify. n(n+1)=42. Positive integer factorization consecutive. 6*7=42. n=6. Could also solve quadratic n^2+n-42=0=(n",
+          "reasoning": "We need answer benchmark task. Need find all positive integers n such that n^2+n=42. Simple. Need justify. n(n+1)=42. Positive integer factorization consecutive. 6*7=42. n=6. Could also solve quadratic n^2+n-42=0=(n",
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "idle": "2026-09-22 15:17:56,500 - INFO - GPU idle: active=315.13 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)",
+      "cache_expected": true
+    },
+    {
+      "name": "cold_long_context_t0",
+      "seconds": 26.477902957994957,
+      "input_sha256": "2d29a5a6a28fb11f62b23dae9b588a0cb7955b16d5eb15b2b9141baddd998cdb",
+      "usage": {
+        "prompt_tokens": 8737,
+        "completion_tokens": 96,
+        "total_tokens": 8833,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 8737,
+        "cache_n": 0,
+        "predicted_n": 96,
+        "prompt_ms": 21858.66512398934,
+        "prompt_per_token_ms": 2.5018501915977267,
+        "prompt_per_second": 399.70418826771635,
+        "predicted_ms": 4569.538399302645,
+        "predicted_per_token_ms": 47.59935832606922,
+        "predicted_per_second": 21.00868656988428,
+        "peak_memory": 351.90388196,
+        "draft_kind": "mtp",
+        "draft_rounds": 55,
+        "draft_n": 55,
+        "draft_n_accepted": 41
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": "# Hash Table Collision Handling: A Detailed Explanation\n\n## 1. The Collision Problem\n\nA hash table maps keys to array indices via a hash function:\n\n```python\nindex = hash(key) % table_size\n```\n\nSince the number of possible keys vastly exceeds the number of slots (the *pigeonhole principle*), two distinct keys can hash to the same index. This is a **collision**. How a table resolves collisions determines its performance.\n\n---\n\n##",
+          "reasoning_content": null,
+          "reasoning": null,
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "idle": "2026-09-22 15:18:22,982 - INFO - GPU idle: active=315.32 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)",
+      "cache_expected": true
+    },
+    {
+      "name": "warm_long_context_t0",
+      "seconds": 4.725045415980276,
+      "input_sha256": "2d29a5a6a28fb11f62b23dae9b588a0cb7955b16d5eb15b2b9141baddd998cdb",
+      "usage": {
+        "prompt_tokens": 8737,
+        "completion_tokens": 96,
+        "total_tokens": 8833,
+        "prompt_tokens_details": {
+          "cached_tokens": 8736
+        }
+      },
+      "timings": {
+        "prompt_n": 1,
+        "cache_n": 8736,
+        "predicted_n": 96,
+        "prompt_ms": 60.48674997873605,
+        "prompt_per_token_ms": 60.48674997873605,
+        "prompt_per_second": 16.53254638993742,
+        "predicted_ms": 4585.859579573336,
+        "predicted_per_token_ms": 47.769370620555584,
+        "predicted_per_second": 20.933916168652452,
+        "peak_memory": 351.90388196,
+        "draft_kind": "mtp",
+        "draft_rounds": 55,
+        "draft_n": 55,
+        "draft_n_accepted": 41
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": "# Hash Table Collision Handling: A Detailed Explanation\n\n## 1. The Collision Problem\n\nA hash table maps keys to array indices via a hash function:\n\n```python\nindex = hash(key) % table_size\n```\n\nSince the number of possible keys vastly exceeds the number of slots (the *pigeonhole principle*), two distinct keys can hash to the same index. This is a **collision**. How a table resolves collisions determines its performance.\n\n---\n\n##",
+          "reasoning_content": null,
+          "reasoning": null,
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "idle": "2026-09-22 15:18:28,002 - INFO - GPU idle: active=315.32 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)",
+      "cache_expected": true
+    },
+    {
+      "name": "cold_long_context_t1",
+      "seconds": 26.333845624991227,
+      "input_sha256": "ce11b2dbc71d90a87134011af94b0ffddf332b6e26c2e50b2174e7bc1be1d26b",
+      "usage": {
+        "prompt_tokens": 8737,
+        "completion_tokens": 96,
+        "total_tokens": 8833,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "prompt_n": 8737,
+        "cache_n": 0,
+        "predicted_n": 96,
+        "prompt_ms": 21866.72029196052,
+        "prompt_per_token_ms": 2.502772151992734,
+        "prompt_per_second": 399.5569469653037,
+        "predicted_ms": 4411.844379278389,
+        "predicted_per_token_ms": 45.95671228414989,
+        "predicted_per_second": 21.75960703666115,
+        "peak_memory": 352.00801452,
+        "draft_kind": "mtp",
+        "draft_rounds": 53,
+        "draft_n": 53,
+        "draft_n_accepted": 42
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": "# Hash Table Collision Handling: A Detailed Explanation\n\n## 1. The Collision Problem\n\nA hash table maps keys to array indices via a hash function. Since the number of possible keys vastly exceeds the number of slots, two distinct keys can hash to the same index — a **collision**. Mathematically, by the pigeonhole principle, collisions are unavoidable whenever the key space is larger than the table.\n\n```python\nhash(\"apple\") % 8   # e",
+          "reasoning_content": null,
+          "reasoning": null,
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "idle": "2026-09-22 15:18:54,340 - INFO - GPU idle: active=315.32 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)",
+      "cache_expected": true
+    },
+    {
+      "name": "warm_long_context_t1",
+      "seconds": 4.561453040980268,
+      "input_sha256": "ce11b2dbc71d90a87134011af94b0ffddf332b6e26c2e50b2174e7bc1be1d26b",
+      "usage": {
+        "prompt_tokens": 8737,
+        "completion_tokens": 96,
+        "total_tokens": 8833,
+        "prompt_tokens_details": {
+          "cached_tokens": 8736
+        }
+      },
+      "timings": {
+        "prompt_n": 1,
+        "cache_n": 8736,
+        "predicted_n": 96,
+        "prompt_ms": 59.42441598745063,
+        "prompt_per_token_ms": 59.42441598745063,
+        "prompt_per_second": 16.82809975299012,
+        "predicted_ms": 4420.448673340051,
+        "predicted_per_token_ms": 46.046340347292194,
+        "predicted_per_second": 21.717252499498716,
+        "peak_memory": 352.00801452,
+        "draft_kind": "mtp",
+        "draft_rounds": 53,
+        "draft_n": 53,
+        "draft_n_accepted": 42
+      },
+      "choice": {
+        "index": 0,
+        "finish_reason": "length",
+        "message": {
+          "role": "assistant",
+          "content": "# Hash Table Collision Handling: A Detailed Explanation\n\n## 1. The Collision Problem\n\nA hash table maps keys to array indices via a hash function. Since the number of possible keys vastly exceeds the number of slots, two distinct keys can hash to the same index — a **collision**. Mathematically, by the pigeonhole principle, collisions are unavoidable whenever the key space is larger than the table.\n\n```python\nhash(\"apple\") % 8   # e",
+          "reasoning_content": null,
+          "reasoning": null,
+          "tool_calls": null,
+          "tool_call_id": null,
+          "name": null
+        },
+        "logprobs": null
+      },
+      "idle": "2026-09-22 15:18:58,969 - INFO - GPU idle: active=315.32 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)",
+      "cache_expected": true
+    }
+  ]
+}

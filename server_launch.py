@@ -2,7 +2,7 @@
 """安装 GLM 运行时补丁后启动 mlx_vlm.server。
 
 APC 在驱逐前限制 prefill 预留，快照可剥离 GLM 的派生投影缓存。
-另安装稀疏注意力、请求清理和取消补丁；适配 mlx-vlm 0.7.1。
+另安装预填充、稀疏注意力、请求清理和取消补丁；适配 mlx-vlm 0.7.1。
 """
 
 import os
@@ -28,7 +28,7 @@ def _observe_cache_size(self, size, token_count):
 
 
 def _prepare_prefill(self, token_count):
-    # 必须在 _make_room 前封顶，否则上游调用先把已有快照全驱逐，事后无法恢复。
+    # 驱逐前限制预留量，避免为单次 prefill 腾空整个 APC。
     if self.disk is not None:
         self.disk.flush()
     self._prefill_tokens = max(0, token_count)
@@ -63,14 +63,14 @@ def _strip_entry(entry):
         if type(child) is not KVCache:
             continue
         keys = getattr(child, "keys", None)
-        # 依赖 GLM 当前结构：多头 projected 与单头潜变量 / 索引分开。
+        # GLM 的多头 projected 与单头潜变量 / 索引分开存储。
         if keys is None or keys.ndim != 4 or keys.shape[1] <= 1:
             continue
         if int(getattr(child, "offset", 0) or 0) <= 0:
             continue
         out[i] = KVCache()
         hit = True
-    # 不改动传进来的对象本身：重新包一层，未命中的子项仍是同一批引用
+    # 共用未替换的子项，不修改调用方的 CacheList。
     return CacheList(*out) if hit else entry
 
 
@@ -87,7 +87,6 @@ if _STRIP_DERIVED:
         # 先剥离再克隆，避免复制无需持久化的投影张量。
         return _original_clone(_strip_derived(prompt_cache), **kwargs)
 
-    # apc.py 内部按模块全局名调用，替换模块属性即可生效
     _apc._clone_prompt_cache_for_apc = _clone_prompt_cache_for_apc
 
     _original_store_exact = APCManager.store_exact_cache
@@ -133,6 +132,10 @@ from long_context_patch import install, install_apc_limit
 
 install()
 install_apc_limit(APCManager)
+
+from prefill_patch import install as install_prefill
+
+install_prefill()
 
 from request_cleanup_patch import install as install_request_cleanup
 

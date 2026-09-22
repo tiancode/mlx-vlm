@@ -4,7 +4,7 @@ Port of the image-conditioned path in huggingface/diffusers PR #14804,
 commit 8d3c30bfda9b511c00992f40cff4170a5502814d. Reference image slots expand
 fourfold into VAE tokens. Text is causal; each image is bidirectional. The
 prefix uses t=0, so its per-layer keys/values can be computed once per request.
-No cache or reference image survives the request.
+Encoded conditions and reference tensors are local to each generate() call.
 """
 import base64
 from io import BytesIO
@@ -159,7 +159,7 @@ class QwenImageEditor:
         encoder = pipeline.text_encoder
         self.processor = Qwen3VLProcessor.from_pretrained(encoder.processor_dir, local_files_only=True)
         # mlx-vlm 0.7.2 loads Qwen3-VL names but omits its Conv3d layout
-        # conversion. Text generation never exercises this vision projection.
+        # conversion. Text-only prompts do not use this vision projection.
         proj = encoder.model.vision_tower.patch_embed.proj
         if tuple(proj.weight.shape[1:]) == (3, 2, 16, 16):
             proj.weight = proj.weight.transpose(0, 2, 3, 4, 1)
@@ -211,8 +211,9 @@ class QwenImageEditor:
         if request.guidance > 1:
             neg_emb, neg_mask = self.encode_prompt(request.negative_prompt, images, check_cancel)
             negative = EditCondition(self.transformer, neg_emb, neg_mask, refs, shapes, target_shape, check_cancel)
+            del neg_emb, neg_mask
         # Release image encoder intermediates before denoising.
-        del emb, refs, images, rgba, mean, normalized, ref
+        del emb, mask, refs, images, image, rgba, mean, normalized, ref
         mx.clear_cache()
         mx.random.seed(request.seed)
         tokens = math.prod(target_shape)

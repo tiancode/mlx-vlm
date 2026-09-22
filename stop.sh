@@ -50,7 +50,7 @@ if [ -f logs/start.pid ]; then
       fi ;;
   esac
 fi
-# 新启动的代理使用绝对脚本路径；旧版相对路径代理由记录的 supervisor 关闭。
+# 按本工程的绝对脚本路径查找代理；相对路径进程由上面的 supervisor 管理。
 proxy_pattern=$("$PYTHON" -c 'import re,sys; print("(^| )" + re.escape(sys.argv[1]) + "( |$)")' "$PWD/model_proxy.py") || exit 1
 stop_matching "代理" "$proxy_pattern" || failed=1
 stop_matching "后端" "server_launch[.]py .*--port ${BACKEND_PORT}( |$)" || failed=1

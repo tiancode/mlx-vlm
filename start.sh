@@ -5,6 +5,8 @@ cd "$(dirname "$0")"
 # 默认权重放内置 SSD；DRAFT 为空时关闭 MTP。
 MODEL=${MODEL:-$HOME/models/GLM-5.3-Flash-FineTunning-MXFP8}
 DRAFT=${DRAFT-${MODEL}-mtp}
+# 块长度包含 anchor；2 对应一个草稿 token，auto 使用上游自适应策略。
+DRAFT_BLOCK_SIZE=${DRAFT_BLOCK_SIZE:-${MLX_VLM_DRAFT_BLOCK_SIZE:-2}}
 HOST=${HOST:-0.0.0.0}
 PORT=${PORT:-1235}
 BACKEND_PORT=${BACKEND_PORT:-1236}
@@ -20,6 +22,11 @@ IMAGE_REQUEST_TIMEOUT=${IMAGE_REQUEST_TIMEOUT:-1800}
 CONTEXT=${CONTEXT:-393216}
 
 TOKEN_QUEUE_TIMEOUT=${TOKEN_QUEUE_TIMEOUT:-3000}
+
+case "$DRAFT_BLOCK_SIZE" in
+  auto) unset MLX_VLM_DRAFT_BLOCK_SIZE ;;
+  ''|*[!0-9]*|0*|1) echo "错误: DRAFT_BLOCK_SIZE 必须为 >=2 的整数或 auto。" >&2; exit 1 ;;
+esac
 
 # GLM 使用 exact 快照；此预算不等于推理进程总内存上限。
 APC=${APC:-1}
@@ -85,7 +92,10 @@ fi
 
 if [ -d "$DRAFT" ]; then
   ARGS+=(--draft-model "$DRAFT" --draft-kind mtp)
-  echo "自投机解码: $DRAFT"
+  if [ "$DRAFT_BLOCK_SIZE" != "auto" ]; then
+    ARGS+=(--draft-block-size "$DRAFT_BLOCK_SIZE")
+  fi
+  echo "自投机解码: $DRAFT (block_size=$DRAFT_BLOCK_SIZE)"
 else
   echo "未找到 drafter ($DRAFT)，按普通解码启动。"
 fi
@@ -178,6 +188,8 @@ if [ "$BACKEND_REUSED" -eq 0 ]; then
   else
     export APC_ENABLED=0
   fi
+  export GLM_ALLOCATOR_CACHE_GB=${GLM_ALLOCATOR_CACHE_GB:-2}
+  echo "  GPU 分配池上限: ${GLM_ALLOCATOR_CACHE_GB} GiB（0 = 空闲时清空）"
   "$PYTHON" -u service_runner.py --log logs/glm.log -- \
     "$PYTHON" -u server_launch.py "${ARGS[@]}" &
   BACKEND_PID=$!

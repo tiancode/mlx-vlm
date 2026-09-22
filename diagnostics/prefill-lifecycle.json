@@ -1,0 +1,33 @@
+[
+  {
+    "case": "normal_completion",
+    "seconds": 0.649,
+    "evidence": [
+      "2026-09-22 14:21:31,899 - INFO - GPU idle: active=315.13 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)"
+    ]
+  },
+  {
+    "case": "stream_disconnect_during_prefill",
+    "seconds": 2.239,
+    "evidence": [
+      "2026-09-22 14:21:37,143 - INFO - GPU idle: active=315.13 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)",
+      "2026-09-22 14:21:37,143 - INFO - Generation cancelled: request=1106a6360 generated_tokens=0"
+    ]
+  },
+  {
+    "case": "nonstream_disconnect",
+    "seconds": 0.237,
+    "evidence": [
+      "2026-09-22 14:21:38,162 - INFO - GPU idle: active=315.13 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)",
+      "2026-09-22 14:21:38,162 - INFO - Generation cancelled: request=1106a6200 generated_tokens=6"
+    ]
+  },
+  {
+    "case": "explicit_response_cancel",
+    "seconds": 0.096,
+    "evidence": [
+      "2026-09-22 14:21:39,114 - INFO - GPU idle: active=315.13 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)",
+      "2026-09-22 14:21:39,114 - INFO - Generation cancelled: request=110a1caf0 generated_tokens=2"
+    ]
+  }
+]
