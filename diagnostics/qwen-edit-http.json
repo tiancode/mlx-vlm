@@ -1,0 +1,109 @@
+{
+  "initial_health": {
+    "status": "ok",
+    "model": "qwen-image-2.1",
+    "model_path": "/Users/deht/models/Qwen-Image-2.1",
+    "loaded": false,
+    "idle_timeout": 300.0,
+    "request_timeout": 1800.0,
+    "active": false,
+    "queued": 0
+  },
+  "qwen-edit-cup-reference": {
+    "created": 1790047545,
+    "model": "qwen-image-2.1",
+    "data": [
+      {
+        "mime_type": "image/png",
+        "width": 512,
+        "height": 512,
+        "seed": 99
+      }
+    ],
+    "size": "512x512",
+    "output_format": "png",
+    "elapsed_seconds": 39.05,
+    "output_bytes": 285365
+  },
+  "during_edit": {
+    "status": "ok",
+    "model": "qwen-image-2.1",
+    "model_path": "/Users/deht/models/Qwen-Image-2.1",
+    "loaded": true,
+    "idle_timeout": 300.0,
+    "request_timeout": 1800.0,
+    "active": true,
+    "queued": 0
+  },
+  "chat_during_edit": {
+    "status": 200,
+    "content": {
+      "role": "assistant",
+      "content": null,
+      "reasoning_content": "The user is asking me to reply with just \"OK\". This is a simple",
+      "reasoning": "The user is asking me to reply with just \"OK\". This is a simple",
+      "tool_calls": null,
+      "tool_call_id": null,
+      "name": null
+    }
+  },
+  "qwen-edit-multi": {
+    "created": 1790047704,
+    "model": "qwen-image-2.1",
+    "data": [
+      {
+        "mime_type": "image/png",
+        "width": 1024,
+        "height": 1024,
+        "seed": 42
+      }
+    ],
+    "size": "1024x1024",
+    "output_format": "png",
+    "elapsed_seconds": 158.27,
+    "output_bytes": 1420440
+  },
+  "cancel_seconds": 0.62,
+  "qwen-edit-ten-inputs-shape-check": {
+    "created": 1790047723,
+    "model": "qwen-image-2.1",
+    "data": [
+      {
+        "mime_type": "image/png",
+        "width": 256,
+        "height": 256,
+        "seed": 43
+      }
+    ],
+    "size": "256x256",
+    "output_format": "png",
+    "elapsed_seconds": 15.15,
+    "output_bytes": 85678
+  },
+  "qwen-edit-cfg-shape-check": {
+    "created": 1790047735,
+    "model": "qwen-image-2.1",
+    "data": [
+      {
+        "mime_type": "image/png",
+        "width": 256,
+        "height": 256,
+        "seed": 3931147314
+      }
+    ],
+    "size": "256x256",
+    "output_format": "png",
+    "elapsed_seconds": 12.08,
+    "output_bytes": 49090
+  },
+  "final_health": {
+    "status": "ok",
+    "model": "qwen-image-2.1",
+    "model_path": "/Users/deht/models/Qwen-Image-2.1",
+    "loaded": true,
+    "idle_timeout": 300.0,
+    "request_timeout": 1800.0,
+    "active": false,
+    "queued": 0
+  }
+}

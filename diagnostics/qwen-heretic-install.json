@@ -1,0 +1,79 @@
+{
+  "source": "/Volumes/model/Qwen-Image-2.1-Text-Encoder-Heretic",
+  "destination": "/Users/deht/models/Qwen-Image-2.1-Text-Encoder-Heretic",
+  "files": {
+    "LICENSE": {
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "NOTICE": {
+      "bytes": 812,
+      "sha256": "4338644c0c7472ae2e546b70acb7fda258dcb1f6c41c09c8770dcd1b72b5dcb8"
+    },
+    "README.md": {
+      "bytes": 6227,
+      "sha256": "53a2c29581c96e556e42190b824fc8800b527f8cab0171358fe2e7fd7ac035ad"
+    },
+    "chat_template.jinja": {
+      "bytes": 5292,
+      "sha256": "3636d0f0bd6bef02654cdffdc447b79cb2cef8ab02cc75267345946291a489e4"
+    },
+    "config.json": {
+      "bytes": 1643,
+      "sha256": "1cce4745c650d4964201e0aa6af129adb4b53b0f0a9989fa2a6ce8da5f41641b"
+    },
+    "generation_config.json": {
+      "bytes": 213,
+      "sha256": "81207a236dbd29cd0df5208c43225ff6d0155e3fe63a40ab2f7331fcf04f4834"
+    },
+    "model-00001-of-00004.safetensors": {
+      "bytes": 4905357176,
+      "sha256": "6e217f5e222d9bee105235f2186e89e56e14b36eed379373e1c447a12c074b6f"
+    },
+    "model-00002-of-00004.safetensors": {
+      "bytes": 4915962456,
+      "sha256": "0226ae289505520c5d223ef9336856c8372682778ae4360ad436b9c9cbb797bf"
+    },
+    "model-00003-of-00004.safetensors": {
+      "bytes": 4974674312,
+      "sha256": "9c62f604a7042811aeb27b85c134cce90c83f5a93b5903402f85b6dddf6e4da2"
+    },
+    "model-00004-of-00004.safetensors": {
+      "bytes": 2738345504,
+      "sha256": "8516dd606abf83378e6936d94d54294de475e281dff72ad33b281fe0b87d4c15"
+    },
+    "model.safetensors.index.json": {
+      "bytes": 67795,
+      "sha256": "dd08ff0fbf2bed6ef1827ef909e3e9057d6d75c4be0fac1273abb880d456b9ab"
+    },
+    "processor_config.json": {
+      "bytes": 1356,
+      "sha256": "8993ae056f017c142d0dd91c3950b1bcfb4043e118d2f24436ec8e67272113b8"
+    },
+    "tokenizer.json": {
+      "bytes": 11422650,
+      "sha256": "be75606093db2094d7cd20f3c2f385c212750648bd6ea4fb2bf507a6a4c55506"
+    },
+    "tokenizer_config.json": {
+      "bytes": 418,
+      "sha256": "09bbc8d235d72ce43f6ab3c1d15e55319f52b672780f977f40441345048c2443"
+    }
+  },
+  "tensor_count": 750,
+  "compatibility": {
+    "reason": "mlx-vlm 0.7.2 requires legacy RoPE fields and the qwen3_vl vision model_type alias",
+    "added_fields": [
+      "text_config.rope_theta",
+      "text_config.rope_scaling"
+    ],
+    "source_config_backup": "config.transformers-original.json",
+    "installed_config_sha256": "61508e8766aac5bcf9a87b8d9d03d8b2831c8b86e5be0f3115c0bc8c89b2c1e9",
+    "weights_changed": false,
+    "renamed_fields": {
+      "vision_config.model_type": {
+        "source": "qwen3_vl_vision",
+        "installed": "qwen3_vl"
+      }
+    }
+  }
+}

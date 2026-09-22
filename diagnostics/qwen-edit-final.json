@@ -1,0 +1,73 @@
+{
+  "multi_512": {
+    "created": 1790048124,
+    "model": "qwen-image-2.1",
+    "data": [
+      {
+        "mime_type": "image/png",
+        "width": 512,
+        "height": 512,
+        "seed": 42
+      }
+    ],
+    "size": "512x512",
+    "output_format": "png",
+    "elapsed_seconds": 41.44
+  },
+  "generation_after_edit": {
+    "status": 200,
+    "width": 256
+  },
+  "unloaded_after_idle": {
+    "status": "ok",
+    "model": "qwen-image-2.1",
+    "model_path": "/Users/deht/models/Qwen-Image-2.1",
+    "loaded": false,
+    "idle_timeout": 3.0,
+    "request_timeout": 1800.0,
+    "active": false,
+    "queued": 0
+  },
+  "unload_log": "2026-09-22 11:35:28,525 INFO Image model unloaded; active memory 0.00 GiB",
+  "production_health": {
+    "status": "ok",
+    "model": "qwen-image-2.1",
+    "model_path": "/Users/deht/models/Qwen-Image-2.1",
+    "loaded": false,
+    "idle_timeout": 300.0,
+    "request_timeout": 1800.0,
+    "active": false,
+    "queued": 0
+  },
+  "models": {
+    "object": "list",
+    "data": [
+      {
+        "id": "glm-5.3-flash",
+        "object": "model",
+        "created": 1790048366
+      },
+      {
+        "id": "qwen-image-2.1",
+        "object": "model",
+        "created": 0,
+        "owned_by": "local",
+        "loaded": false,
+        "capabilities": [
+          "image_generation",
+          "image_editing"
+        ],
+        "max_reference_images": 10
+      }
+    ]
+  },
+  "glm_pid_preserved": 66257,
+  "stop_runner_zombie_handling_fixed": true,
+  "auth_status": 401,
+  "checks": {
+    "image_service_and_inputs": 16,
+    "request_lifecycle": 13,
+    "mlx_numerical": 3,
+    "stop_runner_zombie": "passed"
+  }
+}

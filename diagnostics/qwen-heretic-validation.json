@@ -1,0 +1,51 @@
+{
+  "encoder": "/Users/deht/models/Qwen-Image-2.1-Text-Encoder-Heretic",
+  "cases": {
+    "generation": {
+      "elapsed_seconds": 39.75,
+      "steps": 40,
+      "size": "512x512",
+      "seed": 42,
+      "png_bytes": 343037,
+      "output": "qwen-heretic-generation.png",
+      "prompt": "A red fox sitting in fresh snow, natural wildlife photography.",
+      "references": []
+    },
+    "single": {
+      "elapsed_seconds": 39.1,
+      "steps": 40,
+      "size": "512x512",
+      "seed": 42,
+      "png_bytes": 356187,
+      "output": "qwen-heretic-single.png",
+      "prompt": "Keep the fox and snowy background from image 1. Add a red knitted scarf around the fox neck.",
+      "references": [
+        "qwen-image-1024.png"
+      ]
+    },
+    "multi": {
+      "elapsed_seconds": 40.68,
+      "steps": 40,
+      "size": "512x512",
+      "seed": 42,
+      "png_bytes": 354404,
+      "output": "qwen-heretic-multi.png",
+      "prompt": "Keep the fox and snow from image 1. Put the cup from image 2 beside the fox front paws, preserving the cup color and pattern.",
+      "references": [
+        "qwen-image-1024.png",
+        "qwen-edit-cup-reference.png"
+      ]
+    }
+  },
+  "weight_check": {
+    "parameters": 750,
+    "sample": "language_model.model.layers.0.self_attn.o_proj.weight",
+    "matches_heretic": true
+  },
+  "active_memory_gib_after_close": 9.94652509689331e-07,
+  "visual_review": {
+    "generation": "A fox in snow; nonblank RGB output.",
+    "single": "Fox and snowy composition retained, red knitted scarf added.",
+    "multi": "Fox retained; blue cup with yellow star placed beside front paws."
+  }
+}

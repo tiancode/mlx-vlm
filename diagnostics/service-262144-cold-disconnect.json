@@ -1,0 +1,74 @@
+{
+  "target_tokens": 262080,
+  "nonce": "602d681ef6e2446b8d4786f15dc1b214",
+  "expected": {
+    "ALPHA": "CEDAR-7319",
+    "BRAVO": "OTTER-2846",
+    "CHARLIE": "MAPLE-9502"
+  },
+  "requests": [
+    {
+      "label": "long_prefill_disconnect",
+      "passed": true,
+      "seconds_after_disconnect": 7.484411792000174,
+      "baseline_active_gib": 315.56,
+      "after_active_gib": 315.56,
+      "apc_delta_gib": 0.0,
+      "residual_growth_gib": 0.0,
+      "evidence": [
+        "2026-09-19 21:21:31,410 - INFO - Generation queued: request=c281284f50 prompt_tokens=262047 max_tokens=64 images=0 audio=0 videos=0",
+        "2026-09-19 21:21:31,417 - INFO - Prefill started: request=c281284f50 backend=continuous_batching prompt_tokens=262047 images=0 audio=0 videos=0",
+        "2026-09-19 21:21:40,421 - INFO - Prefill progress: request=c281284f50 tokens=2048/262047 (0.8%)",
+        "2026-09-19 21:21:40,429 - INFO - GPU idle: active=315.56 GiB allocator_cache=0.00 GiB (model weights and APC remain resident)",
+        "2026-09-19 21:21:40,429 - INFO - Generation cancelled: request=c281284f50 generated_tokens=0"
+      ],
+      "server": {
+        "loaded_model": "/Users/deht/models/GLM-5.3-Flash-MXFP8",
+        "loaded_adapter": null,
+        "loaded_models": {
+          "text_generation": {
+            "model": "glm-5.3-flash",
+            "adapter": null,
+            "model_kind": "text_generation"
+          }
+        },
+        "model_kind": "text_generation",
+        "loaded_context_size": 1048576,
+        "configured_context_limit": 262144,
+        "effective_context_limit": 262144,
+        "loaded_tool_parser": "glm47",
+        "continuous_batching_enabled": true,
+        "request_queue_depth": 0,
+        "audio_queue_depth": 0,
+        "preload_failures": {},
+        "apc": {
+          "enabled": true,
+          "block_size": 16,
+          "num_blocks": 2048,
+          "pool_used": 0,
+          "lookups_hit": 1,
+          "lookups_miss": 0,
+          "matched_tokens": 18432,
+          "served_tokens": 0,
+          "token_hit_rate": 1.0,
+          "evictions": 0,
+          "stores": 0,
+          "disk_hits": 0,
+          "disk_writes": 0,
+          "disk_write_failures": 0,
+          "exact_hits": 1,
+          "exact_stores": 6,
+          "memory_evictions": 0,
+          "memory_skips": 0,
+          "rejects": 0,
+          "rejects_by_reason": {},
+          "last_reject": null,
+          "resident_bytes": 755329112,
+          "exact_resident_bytes": 755329112,
+          "memory_max_bytes": 34359738368,
+          "prefill_reserve_bytes": 8589934592
+        }
+      }
+    }
+  ]
+}

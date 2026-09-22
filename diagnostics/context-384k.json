@@ -1,0 +1,47 @@
+{
+  "checked_at": "2026-09-20T06:26:03.496884+00:00",
+  "context_tokens": 393216,
+  "health": {
+    "1236": {
+      "status": "healthy",
+      "loaded_model": "/Users/deht/models/GLM-5.3-Flash-FineTunning-MXFP8",
+      "loaded_adapter": null,
+      "loaded_models": {
+        "text_generation": {
+          "model": "/Users/deht/models/GLM-5.3-Flash-FineTunning-MXFP8",
+          "adapter": null,
+          "model_kind": "text_generation"
+        }
+      },
+      "loaded_context_size": 1048576,
+      "configured_context_limit": 393216,
+      "effective_context_limit": 393216,
+      "loaded_tool_parser": "glm47",
+      "continuous_batching_enabled": true,
+      "apc_enabled": true
+    },
+    "1235": {
+      "status": "healthy",
+      "loaded_model": "/Users/deht/models/GLM-5.3-Flash-FineTunning-MXFP8",
+      "loaded_adapter": null,
+      "loaded_models": {
+        "text_generation": {
+          "model": "glm-5.3-flash",
+          "adapter": null,
+          "model_kind": "text_generation"
+        }
+      },
+      "loaded_context_size": 1048576,
+      "configured_context_limit": 393216,
+      "effective_context_limit": 393216,
+      "loaded_tool_parser": "glm47",
+      "continuous_batching_enabled": true,
+      "apc_enabled": true
+    }
+  },
+  "smoke": {
+    "answer": "4",
+    "finish_reason": "stop"
+  },
+  "status": "passed"
+}

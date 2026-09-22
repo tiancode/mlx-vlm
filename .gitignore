@@ -1,0 +1,12 @@
+# macOS metadata
+._*
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# Runtime logs and pid files
+logs/
+*.pid
+*.nohup

@@ -1,0 +1,117 @@
+{
+  "target_tokens": 20000,
+  "nonce": "799e73939fe14b728ead90d04b4fff39",
+  "expected": {
+    "ALPHA": "CEDAR-7319",
+    "BRAVO": "OTTER-2846",
+    "CHARLIE": "MAPLE-9502"
+  },
+  "requests": [
+    {
+      "label": "cold",
+      "endpoint": "responses",
+      "seconds": 55.590786708999076,
+      "status": 200,
+      "max_output_tokens": 64,
+      "passed": true,
+      "response": {
+        "id": "resp_7f1472c67c5e4188af16496b6326b33d",
+        "object": "response",
+        "created_at": 1789824003,
+        "status": "completed",
+        "error": null,
+        "instructions": null,
+        "max_output_tokens": 64,
+        "model": "glm-5.3-flash",
+        "output": [
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "text": "ALPHA=CEDAR-7319; BRAVO=OTTER-2846; CHARLIE=MAPLE-9502",
+                "type": "output_text",
+                "annotations": []
+              }
+            ],
+            "reasoning_content": null,
+            "reasoning": null,
+            "tool_calls": null,
+            "tool_call_id": null,
+            "name": null,
+            "id": "msg_5883a73d1c16441785284ce915a62f27",
+            "type": "message",
+            "status": "completed"
+          }
+        ],
+        "output_text": "ALPHA=CEDAR-7319; BRAVO=OTTER-2846; CHARLIE=MAPLE-9502",
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "truncation": "disabled",
+        "usage": {
+          "input_tokens": 19947,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 32,
+          "total_tokens": 19979
+        },
+        "user": null,
+        "previous_response_id": null,
+        "store": false
+      }
+    },
+    {
+      "label": "warm_append",
+      "endpoint": "responses",
+      "seconds": 6.2896393749979325,
+      "status": 200,
+      "max_output_tokens": 64,
+      "passed": true,
+      "response": {
+        "id": "resp_a50a41a94f8d42319a46ff1848c65143",
+        "object": "response",
+        "created_at": 1789824059,
+        "status": "completed",
+        "error": null,
+        "instructions": null,
+        "max_output_tokens": 64,
+        "model": "glm-5.3-flash",
+        "output": [
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "text": "ALPHA=CEDAR-7319; BRAVO=OTTER-2846; CHARLIE=MAPLE-9502",
+                "type": "output_text",
+                "annotations": []
+              }
+            ],
+            "reasoning_content": null,
+            "reasoning": null,
+            "tool_calls": null,
+            "tool_call_id": null,
+            "name": null,
+            "id": "msg_0e1e14f24bc1430ea5793613df56b104",
+            "type": "message",
+            "status": "completed"
+          }
+        ],
+        "output_text": "ALPHA=CEDAR-7319; BRAVO=OTTER-2846; CHARLIE=MAPLE-9502",
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "truncation": "disabled",
+        "usage": {
+          "input_tokens": 19977,
+          "input_tokens_details": {
+            "cached_tokens": 18432
+          },
+          "output_tokens": 32,
+          "total_tokens": 20009
+        },
+        "user": null,
+        "previous_response_id": null,
+        "store": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+Request cleanup patch: completed/cancelled MTP state and idle wired buffers released
+test_cancel_closes_suspended_rounds (__main__.CleanupTests.test_cancel_closes_suspended_rounds) ... ok
+test_first_token_completes_request (__main__.CleanupTests.test_first_token_completes_request) ... ok
+test_idle_only_releases_wired_limit (__main__.CleanupTests.test_idle_only_releases_wired_limit) ... ok
+test_normal_round_completion (__main__.CleanupTests.test_normal_round_completion) ... ok
+test_partial_cancel_preserves_other_row (__main__.CleanupTests.test_partial_cancel_preserves_other_row) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.058s
+
+OK

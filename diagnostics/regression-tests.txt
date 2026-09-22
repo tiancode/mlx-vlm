@@ -1,0 +1,14 @@
+GLM long-context patch: 64-bit sparse addresses; finite-logit check enabled
+test_cap_before_eviction (__main__.GuardTests.test_cap_before_eviction) ... ok
+test_empty_batch_cache (__main__.GuardTests.test_empty_batch_cache) ... ok
+test_exact_limit_forwarding (__main__.GuardTests.test_exact_limit_forwarding) ... ok
+test_nonfinite_logits (__main__.GuardTests.test_nonfinite_logits) ... ok
+test_clone_strips_before_copy_and_preserves_state (__main__.SnapshotTests.test_clone_strips_before_copy_and_preserves_state) ... ok
+test_disk_roundtrip_long_state (__main__.SnapshotTests.test_disk_roundtrip_long_state) ... ok
+test_large_offsets (__main__.SparseAttentionTests.test_large_offsets) ... ok
+test_matches_gathered_reference (__main__.SparseAttentionTests.test_matches_gathered_reference) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.910s
+
+OK

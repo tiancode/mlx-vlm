@@ -1,0 +1,20 @@
+{
+  "created": 1790047350,
+  "model": "qwen-image-2.1",
+  "data": [
+    {
+      "mime_type": "image/png",
+      "width": 512,
+      "height": 512,
+      "seed": 42
+    }
+  ],
+  "size": "512x512",
+  "output_format": "png",
+  "elapsed_seconds": 38.73,
+  "input_count": 1,
+  "reference_size": 512,
+  "vae_psnr": 33.73232346992232,
+  "output_bytes": 355648,
+  "peak_memory_gib": 34.753816379234195
+}

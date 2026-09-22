@@ -1,0 +1,167 @@
+{
+  "target_tokens": 200000,
+  "nonce": "5f78338c98354c4b8485c5f7020b523e",
+  "expected": {
+    "ALPHA": "CEDAR-7319",
+    "BRAVO": "OTTER-2846",
+    "CHARLIE": "MAPLE-9502"
+  },
+  "requests": [
+    {
+      "label": "cold",
+      "seconds": 778.3171786250023,
+      "status": 200,
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-1d98b632-aed6-44d7-b418-7b8d702b5c1b",
+        "object": "chat.completion",
+        "created": 1789821142,
+        "model": "glm-5.3-flash",
+        "choices": [
+          {
+            "index": 0,
+            "finish_reason": "stop",
+            "message": {
+              "role": "assistant",
+              "content": "ALPHA=CEDAR-7319; BRAVO=OTTER-2846; CHARLIE=MAPLE-9502",
+              "reasoning_content": null,
+              "reasoning": null,
+              "tool_calls": null,
+              "tool_call_id": null,
+              "name": null
+            },
+            "logprobs": null
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 199947,
+          "completion_tokens": 32,
+          "total_tokens": 199979,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "timings": {
+          "prompt_n": 199947,
+          "cache_n": 0,
+          "predicted_n": 32,
+          "prompt_ms": 776328.4178690957,
+          "prompt_per_token_ms": 3.882670997159726,
+          "prompt_per_second": 257.5546577939583,
+          "predicted_ms": 1646.7103225839953,
+          "predicted_per_token_ms": 51.459697580749854,
+          "predicted_per_second": 19.43268318728095,
+          "peak_memory": 386.302310864,
+          "draft_kind": "mtp",
+          "draft_rounds": 17,
+          "draft_n": 21,
+          "draft_n_accepted": 14
+        }
+      }
+    },
+    {
+      "label": "warm_append",
+      "seconds": 10.96133833299973,
+      "status": 200,
+      "passed": true,
+      "response": {
+        "id": "chatcmpl-c82b9252-ccc0-433b-bc12-cc8127122fc9",
+        "object": "chat.completion",
+        "created": 1789821153,
+        "model": "glm-5.3-flash",
+        "choices": [
+          {
+            "index": 0,
+            "finish_reason": "stop",
+            "message": {
+              "role": "assistant",
+              "content": "ALPHA=CEDAR-7319; BRAVO=OTTER-2846; CHARLIE=MAPLE-9502",
+              "reasoning_content": null,
+              "reasoning": null,
+              "tool_calls": null,
+              "tool_call_id": null,
+              "name": null
+            },
+            "logprobs": null
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 199977,
+          "completion_tokens": 32,
+          "total_tokens": 200009,
+          "prompt_tokens_details": {
+            "cached_tokens": 198656
+          }
+        },
+        "timings": {
+          "prompt_n": 1321,
+          "cache_n": 198656,
+          "predicted_n": 32,
+          "prompt_ms": 8787.904291995801,
+          "prompt_per_token_ms": 6.65246350643134,
+          "prompt_per_second": 150.3202533968415,
+          "predicted_ms": 1775.863699615002,
+          "predicted_per_token_ms": 55.49574061296881,
+          "predicted_per_second": 18.01940092977712,
+          "peak_memory": 390.997013946,
+          "draft_kind": "mtp",
+          "draft_rounds": 20,
+          "draft_n": 20,
+          "draft_n_accepted": 11
+        }
+      }
+    },
+    {
+      "label": "warm_extend",
+      "endpoint": "responses",
+      "seconds": 332.01134383300086,
+      "status": 200,
+      "passed": true,
+      "response": {
+        "id": "resp_ebb5e3118c254a1296f8a717d9f785ca",
+        "object": "response",
+        "created_at": 1789821311,
+        "status": "completed",
+        "error": null,
+        "instructions": null,
+        "max_output_tokens": 1024,
+        "model": "glm-5.3-flash",
+        "output": [
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "text": "ALPHA=CEDAR-7319; BRAVO=OTTER-2846; CHARLIE=MAPLE-9502",
+                "type": "output_text",
+                "annotations": []
+              }
+            ],
+            "reasoning_content": null,
+            "reasoning": null,
+            "tool_calls": null,
+            "tool_call_id": null,
+            "name": null,
+            "id": "msg_f512a9ee479f4ad1bc3db22046e0d898",
+            "type": "message",
+            "status": "completed"
+          }
+        ],
+        "output_text": "ALPHA=CEDAR-7319; BRAVO=OTTER-2846; CHARLIE=MAPLE-9502",
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "truncation": "disabled",
+        "usage": {
+          "input_tokens": 255963,
+          "input_tokens_details": {
+            "cached_tokens": 198656
+          },
+          "output_tokens": 32,
+          "total_tokens": 255995
+        },
+        "user": null,
+        "previous_response_id": null,
+        "store": false
+      }
+    }
+  ]
+}

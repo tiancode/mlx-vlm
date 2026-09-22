@@ -1,0 +1,6 @@
+mlx-vlm==0.7.2
+mlx==0.32.2
+transformers==5.17.0
+starlette==1.6.0
+uvicorn==0.44.0
+python-multipart==0.0.32

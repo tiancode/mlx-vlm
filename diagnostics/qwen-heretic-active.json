@@ -1,0 +1,19 @@
+{
+  "active_encoder": "/Users/deht/models/Qwen-Image-2.1-Text-Encoder-Heretic",
+  "original_encoder": "/Users/deht/models/Qwen-Image-2.1-Text-Encoder-Original",
+  "image_runner_pid": 31725,
+  "health": {
+    "status": "ok",
+    "model": "qwen-image-2.1",
+    "model_path": "/Users/deht/models/Qwen-Image-2.1",
+    "loaded": false,
+    "idle_timeout": 300.0,
+    "request_timeout": 1800.0,
+    "active": false,
+    "queued": 0
+  },
+  "glm_pids_preserved": [
+    "66254",
+    "66257"
+  ]
+}

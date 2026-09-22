@@ -1,0 +1,41 @@
+{
+  "health": "proxy and backend ready",
+  "model": {
+    "backend": "/Users/deht/models/GLM-5.3-Flash-FineTunning-MXFP8",
+    "public": "glm-5.3-flash"
+  },
+  "text": {
+    "answer": "4",
+    "usage": {
+      "prompt_tokens": 22,
+      "completion_tokens": 3,
+      "total_tokens": 25,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "seconds": 4.06
+  },
+  "vision": {
+    "answer": "蓝色",
+    "usage": {
+      "prompt_tokens": 87,
+      "completion_tokens": 3,
+      "total_tokens": 90,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    }
+  },
+  "responses_stream": {
+    "answer": "4",
+    "events": 9,
+    "status": "completed",
+    "reasoning_events": 0
+  },
+  "anthropic": {
+    "answer": "PONG",
+    "stop_reason": "end_turn"
+  },
+  "status": "passed"
+}

@@ -1,0 +1,34 @@
+GLM long-context patch: 64-bit sparse addresses; finite-logit check enabled
+Request cleanup patch: completed/cancelled MTP state and idle wired buffers released
+test_cap_before_eviction (test_long_context.GuardTests.test_cap_before_eviction) ... ok
+test_empty_batch_cache (test_long_context.GuardTests.test_empty_batch_cache) ... ok
+test_exact_limit_forwarding (test_long_context.GuardTests.test_exact_limit_forwarding) ... ok
+test_nonfinite_logits (test_long_context.GuardTests.test_nonfinite_logits) ... ok
+test_old_disk_namespace_isolated (test_long_context.GuardTests.test_old_disk_namespace_isolated) ... ok
+test_clone_strips_before_copy_and_preserves_state (test_long_context.SnapshotTests.test_clone_strips_before_copy_and_preserves_state) ... ok
+test_disk_roundtrip_long_state (test_long_context.SnapshotTests.test_disk_roundtrip_long_state) ... ok
+test_large_offsets (test_long_context.SparseAttentionTests.test_large_offsets) ... ok
+test_matches_gathered_reference (test_long_context.SparseAttentionTests.test_matches_gathered_reference) ... ok
+test_cancel_closes_suspended_rounds (test_request_cleanup.CleanupTests.test_cancel_closes_suspended_rounds) ... ok
+test_first_token_completes_request (test_request_cleanup.CleanupTests.test_first_token_completes_request) ... ok
+test_idle_only_releases_wired_limit (test_request_cleanup.CleanupTests.test_idle_only_releases_wired_limit) ... ok
+test_normal_round_completion (test_request_cleanup.CleanupTests.test_normal_round_completion) ... ok
+test_owned_embeddings_release_all_server_references (test_request_cleanup.CleanupTests.test_owned_embeddings_release_all_server_references) ... ok
+test_partial_cancel_preserves_other_row (test_request_cleanup.CleanupTests.test_partial_cancel_preserves_other_row) ... ok
+test_cancel_preserves_auth_and_stops_only_target (test_request_lifecycle.CancelEndpointTests.test_cancel_preserves_auth_and_stops_only_target) ... ok
+test_backend_nonstream_disconnect_closes_iterator (test_request_lifecycle.MiddlewareTests.test_backend_nonstream_disconnect_closes_iterator) ... ok
+test_proxy_disconnect_cancels_upstream_and_closes (test_request_lifecycle.MiddlewareTests.test_proxy_disconnect_cancels_upstream_and_closes) ... ok
+test_split_created_event_is_registered_and_removed (test_request_lifecycle.MiddlewareTests.test_split_created_event_is_registered_and_removed) ... ok
+test_two_concurrent_contexts_are_isolated (test_request_lifecycle.MiddlewareTests.test_two_concurrent_contexts_are_isolated) ... ok
+test_cancel_before_iterator_registration (test_request_lifecycle.OwnershipTests.test_cancel_before_iterator_registration) ... ok
+test_cancel_is_request_scoped (test_request_lifecycle.OwnershipTests.test_cancel_is_request_scoped) ... ok
+test_cancel_pending_frees_input_and_unblocks_waiter (test_request_lifecycle.OwnershipTests.test_cancel_pending_frees_input_and_unblocks_waiter) ... ok
+test_cancelled_eof_is_not_success (test_request_lifecycle.OwnershipTests.test_cancelled_eof_is_not_success) ... ok
+test_finished_generation_cannot_be_cancelled (test_request_lifecycle.OwnershipTests.test_finished_generation_cannot_be_cancelled) ... ok
+test_late_iterator_after_handler_exit (test_request_lifecycle.OwnershipTests.test_late_iterator_after_handler_exit) ... ok
+test_queued_cancel_not_admitted (test_request_lifecycle.OwnershipTests.test_queued_cancel_not_admitted) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.666s
+
+OK

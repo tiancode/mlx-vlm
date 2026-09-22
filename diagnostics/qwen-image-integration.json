@@ -1,0 +1,12 @@
+{
+  "auth_and_validation": "passed",
+  "cancel_seconds": 2.66,
+  "glm_chat": "passed",
+  "glm_messages": "passed",
+  "glm_responses_stream": "passed",
+  "2k_shape_test": {
+    "steps": 2,
+    "seconds": 58.21,
+    "png_bytes": 3806978
+  }
+}
